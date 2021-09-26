@@ -6,10 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Entity
@@ -21,13 +19,17 @@ import java.util.Date;
 public class Candidato {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Candidato")
     private Integer idCandidato;
 
+    @NotEmpty
     private String nombre;
 
+    @NotEmpty
     private String apellido;
 
+    @NotEmpty
     private TipoDocumento tipo;
 
     @Column(name = "numero_doc")
