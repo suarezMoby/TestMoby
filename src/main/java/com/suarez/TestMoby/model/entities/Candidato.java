@@ -1,13 +1,15 @@
-package com.suarez.TestMoby.model;
+package com.suarez.TestMoby.model.entities;
 
 import com.suarez.TestMoby.model.enums.TipoDocumento;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Data
+@Table(name = "candidato")
 public class Candidato {
 
     @Id
