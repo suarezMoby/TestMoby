@@ -1,2 +1,5 @@
-package com.suarez.TestMoby.model;public class Tecnologia {
+package com.suarez.TestMoby.model;
+
+
+public class Tecnologia {
 }
