@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface CandidatoService {
 
-    void guardar(Candidato candidato);
+    //void guardar(Candidato candidato);
 
 
-    List<CandidatoXTecnologia> getCandidatosPorTecnologia(String tecno);
+    List<Candidato> getCandidatosPorTecnologia(String tecno);
 }

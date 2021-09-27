@@ -7,13 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CandidatoPorTecnologia extends JpaRepository<CandidatoPorTecnologia,Integer> {
+public interface CandidatoPorTecnologia extends JpaRepository<CandidatoPorTecnologia, Integer> {
 
-    @Query(value = "SELECT " +
-            "candidato.nombre" +
-            "FROM candidato" +
-            "JOIN candidato_x_tecnologia USING(id_candidato_x_tecnologia)" +
-            "JOIN tecnologias USING(id_tecnologia)" +
-            "where tecnologias.nombre = 'java'", nativeQuery = true)
-    List<CandidatoXTecnologia> buscarTecnologia(String tecno);
+
 }

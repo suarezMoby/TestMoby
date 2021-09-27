@@ -13,7 +13,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "candidato_x_tecnologia")
-
 public class CandidatoXTecnologia {
 
     @Id

@@ -19,10 +19,7 @@ public class Tecnologia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tecnologia")
-
-    @NotEmpty
+    private Integer idTecnologia;
     private String nombre;
-
-    @NotEmpty
     private String version;
 }

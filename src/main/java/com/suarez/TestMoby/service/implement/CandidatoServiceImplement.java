@@ -22,14 +22,14 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     CandidatoPorTecnologia candidatoPorTecnologia;
 
-    @Override
+   /* @Override
     public void guardar(Candidato candidato) {
      candidatoRepository.save(candidato);
-    }
+    }*/
 
     @Override
-    public List<CandidatoXTecnologia> getCandidatosPorTecnologia(String tecno) {
-        return candidatoPorTecnologia.buscarTecnologia(tecno);
+    public List<Candidato> getCandidatosPorTecnologia(String tecno) {
+        return candidatoRepository.buscarTecnologia(tecno);
     }
 
 

@@ -15,19 +15,17 @@ public class CandidatoController {
     @Autowired
     private CandidatoService candidatoService;
 
-    @PostMapping(value = "/crear")
+    /*@PostMapping(value = "/crear")
     public ResponseEntity<Candidato>crearCandidato(@RequestBody Candidato candidato){
 
         candidatoService.guardar(candidato);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-    @GetMapping(value = "/listarCandidatos")
-    public ResponseEntity<Candidato>buscarCandidato(@RequestBody String tecnologia){
+    }*/
+
+    @GetMapping(value = "/listarCandidatos/{tecnologia}")
+    public ResponseEntity<Candidato>buscarCandidato(@RequestParam String tecnologia){
         candidatoService.getCandidatosPorTecnologia(tecnologia);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-
 
 }

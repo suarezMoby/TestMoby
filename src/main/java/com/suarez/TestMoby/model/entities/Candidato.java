@@ -23,13 +23,13 @@ public class Candidato {
     @Column(name = "id_Candidato")
     private Integer idCandidato;
 
-    @NotEmpty
+
     private String nombre;
 
-    @NotEmpty
+
     private String apellido;
 
-    @NotEmpty
+    @Enumerated(EnumType.STRING)
     private TipoDocumento tipo;
 
     @Column(name = "numero_doc")
