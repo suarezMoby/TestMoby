@@ -1,6 +1,7 @@
 package com.suarez.TestMoby.controller;
 
 import com.suarez.TestMoby.model.entities.Candidato;
+import com.suarez.TestMoby.model.entities.Tecnologia;
 import com.suarez.TestMoby.service.CandidatoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,11 +21,13 @@ public class CandidatoController {
         candidatoService.guardar(candidato);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    @GetMapping(value = "/buscatPrTecnologia/{tecnologia}")
-    public ResponseEntity<Candidato>buscarCandidato(@RequestBody Candidato candidato){
-        candidatoService.b
+    @GetMapping(value = "/listarCandidatos")
+    public ResponseEntity<Candidato>buscarCandidato(@RequestBody String tecnologia){
+        candidatoService.getCandidatosPorTecnologia(tecnologia);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 
 
 }
