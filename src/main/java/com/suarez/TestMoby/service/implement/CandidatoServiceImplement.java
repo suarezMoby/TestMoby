@@ -1,6 +1,7 @@
 package com.suarez.TestMoby.service.implement;
 
 import com.suarez.TestMoby.model.entities.Candidato;
+import com.suarez.TestMoby.model.entities.Tecnologia;
 import com.suarez.TestMoby.repository.CandidatoRepository;
 import com.suarez.TestMoby.service.CandidatoService;
 import lombok.extern.java.Log;
@@ -18,4 +19,10 @@ public class CandidatoServiceImplement implements CandidatoService {
     public void guardar(Candidato candidato) {
      candidatoRepository.save(candidato);
     }
+
+    @Override
+    public void bucarXTecnologia(Tecnologia tecnologia) {
+        candidatoRepository.findAll(tecnologia);
+    }
+
 }

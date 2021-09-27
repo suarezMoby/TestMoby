@@ -20,4 +20,11 @@ public class CandidatoController {
         candidatoService.guardar(candidato);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping(value = "/buscatPrTecnologia/{tecnologia}")
+    public ResponseEntity<Candidato>buscarCandidato(@RequestBody Candidato candidato){
+        candidatoService.b
+    }
+
+
 }
