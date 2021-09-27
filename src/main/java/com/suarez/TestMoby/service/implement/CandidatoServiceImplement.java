@@ -22,10 +22,7 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     CandidatoPorTecnologia candidatoPorTecnologia;
 
-   /* @Override
-    public void guardar(Candidato candidato) {
-     candidatoRepository.save(candidato);
-    }*/
+
 
     @Override
     public List<Candidato> getCandidatosPorTecnologia(String tecno) {
