@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "candidato_x_tecnologia")
-public class CandidatoXTecnologia {
+public class CandidatoXTecnologia implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class CandidatoXTecnologia {
 
     @JoinColumn(name = "id_candidato", referencedColumnName = "id")
     @ManyToOne
-    private Candidato candidato;
+    private CandidatoNuevo candidato;
 
     @JoinColumn(name = "id_tecnologia", referencedColumnName = "id_tecnologia")
     @ManyToOne
