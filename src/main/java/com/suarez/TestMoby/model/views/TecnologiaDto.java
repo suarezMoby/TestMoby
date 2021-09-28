@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TecnologiaDto {
 
+    private Integer idTecnologia;
     private String nombre;
     private String version;
 
