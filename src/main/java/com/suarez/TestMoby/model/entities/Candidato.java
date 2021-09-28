@@ -36,7 +36,9 @@ public class Candidato {
     private String numeroDoc;
 
     @Column(name = "fecha_de_nacimiento")
-    private Date FechaDeNacimiento;
+    private Date fechaDeNacimiento;
+
+
 
 
 }

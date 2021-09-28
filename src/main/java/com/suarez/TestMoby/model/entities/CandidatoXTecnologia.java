@@ -29,7 +29,7 @@ public class CandidatoXTecnologia {
     private Tecnologia tecnologia;
 
     @Column(name = "años_de_experiencia")
-    private Integer añosDeExperiencia;
+    private Integer aniosDeExperiencia;
 
 
 }
