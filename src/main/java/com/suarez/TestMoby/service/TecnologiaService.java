@@ -1,8 +1,9 @@
 package com.suarez.TestMoby.service;
 
-import com.suarez.TestMoby.model.views.CandidatoPorTecnologia;
+import com.suarez.TestMoby.model.entities.CandidatoXTecnologia;
+import com.suarez.TestMoby.model.views.CandidatoPorTecnologiaDto;
 
 public interface TecnologiaService {
 
-    void guardarTecnologiaPorCandidato(CandidatoPorTecnologia tecnologiaPorCandidato);
+    public void guardarTecnologiaPorCandidato(CandidatoXTecnologia candidatoXTecnologia);
 }

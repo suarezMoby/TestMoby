@@ -5,11 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @AllArgsConstructor
 @Builder
 @Data
 @NoArgsConstructor
-public class CandidatoPorTecnologia {
+public class CandidatoPorTecnologiaDto {
 
     private Integer idCandidato;
     private Integer idTenologia;

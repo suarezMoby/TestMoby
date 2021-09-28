@@ -8,9 +8,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 @AllArgsConstructor
 @Builder
 @Data

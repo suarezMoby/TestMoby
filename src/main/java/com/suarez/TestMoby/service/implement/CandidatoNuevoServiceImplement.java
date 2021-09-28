@@ -5,7 +5,7 @@ import com.suarez.TestMoby.exception.TecnologiaException;
 import com.suarez.TestMoby.model.entities.CandidatoNuevo;
 import com.suarez.TestMoby.model.entities.CandidatoXTecnologia;
 import com.suarez.TestMoby.model.entities.Tecnologia;
-import com.suarez.TestMoby.model.views.CandidatoPorTecnologia;
+import com.suarez.TestMoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.TestMoby.model.views.CrearCandidatoDto;
 import com.suarez.TestMoby.model.views.TecnologiaDto;
 import com.suarez.TestMoby.repository.CandidatoNuevoRepository;
@@ -15,7 +15,6 @@ import com.suarez.TestMoby.service.TecnologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.ParseException;
-import java.util.List;
 
 public class CandidatoNuevoServiceImplement  implements CandidatoNuevoService {
 
@@ -32,7 +31,7 @@ public class CandidatoNuevoServiceImplement  implements CandidatoNuevoService {
     TecnologiaService tecnologiaService;
 
     @Autowired
-    CandidatoPorTecnologia candidatoPorTecnologia;
+    CandidatoPorTecnologiaDto candidatoPorTecnologia;
 
 
     @Override
