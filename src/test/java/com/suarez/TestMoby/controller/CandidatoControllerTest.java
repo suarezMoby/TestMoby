@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class CandidatoControllerTest {
 
-    @Autowired
+   /* @Autowired
     private MockMvc mockMvc;
 
     @Nested
@@ -51,6 +51,6 @@ class CandidatoControllerTest {
                     .andExpect(status().isCreated());
         }
 
-    }
+    }*/
 
 }

@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 public class CandidatoServiceImplementTest {
 
-    @InjectMocks
+   /* @InjectMocks
     private CandidatoServiceImplement candidatoServiceImplement;
 
     @Mock
@@ -36,6 +36,6 @@ public class CandidatoServiceImplementTest {
         when(candidatoRepository.buscarTecnologia(tecno)).thenReturn(candidatosEsperados);
         List<Candidato> candidatoActual = candidatoServiceImplement.getCandidatosPorTecnologia(tecno);
         verify(candidatoRepository,times(1)).buscarTecnologia(tecno);
-    }
+    }*/
 
 }

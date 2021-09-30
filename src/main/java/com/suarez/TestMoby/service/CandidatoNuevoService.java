@@ -10,9 +10,9 @@ public interface CandidatoNuevoService {
 
 
 
-    Boolean guardar(CrearCandidatoDto dto) throws ParseException;
+   // Boolean guardar(CrearCandidatoDto dto) throws ParseException;
 
-    public CandidatoNuevo cargarCandidato(CrearCandidatoDto dto);
+    //public CandidatoNuevo cargarCandidato(CrearCandidatoDto dto);
 
-    boolean existePorDocumento(String documento);
+    //boolean existePorDocumento(String documento);
 }

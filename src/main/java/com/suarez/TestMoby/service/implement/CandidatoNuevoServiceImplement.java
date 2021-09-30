@@ -18,7 +18,7 @@ import java.text.ParseException;
 
 public class CandidatoNuevoServiceImplement  implements CandidatoNuevoService {
 
-    @Autowired
+   /* @Autowired
     CandidatoNuevoRepository candidatoNuevoRepository;
 
     @Autowired
@@ -36,7 +36,7 @@ public class CandidatoNuevoServiceImplement  implements CandidatoNuevoService {
 
     @Override
     public Boolean guardar(CrearCandidatoDto dto) throws ParseException {
-        Integer id = cargarCandidato(dto).getIdCandidato();
+        Integer id = cargarCandidato(dto).getId();
         return candidatoNuevoRepository.existsById(id);
     }
 
@@ -83,5 +83,6 @@ public class CandidatoNuevoServiceImplement  implements CandidatoNuevoService {
             );
         }
 
-    }
+    }*/
+
 }

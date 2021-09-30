@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TecnologiaServiceImplement implements TecnologiaService {
-
+/*
     @Autowired
     CandidatoPorTecnologiaRepository candidatoPorTecnologiaRepository;
 
     @Override
     public void guardarTecnologiaPorCandidato(CandidatoXTecnologia candidatoXTecnologia){
         candidatoPorTecnologiaRepository.save(candidatoXTecnologia);
-    }
+    }*/
 }

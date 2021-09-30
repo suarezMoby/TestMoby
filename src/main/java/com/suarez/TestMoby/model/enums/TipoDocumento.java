@@ -1,5 +1,8 @@
 package com.suarez.TestMoby.model.enums;
 
+import javax.persistence.Entity;
+
+
 public enum TipoDocumento {
 
     DNI("DNI"),

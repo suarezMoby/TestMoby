@@ -9,8 +9,8 @@ import java.util.List;
 public interface CandidatoService {
 
 
-    Candidato crearCandidato(Candidato candidato);
+   /* Candidato crearCandidato(Candidato candidato);
 
 
-    List<Candidato> getCandidatosPorTecnologia(String tecno);
+    List<Candidato> getCandidatosPorTecnologia(String tecno);*/
 }

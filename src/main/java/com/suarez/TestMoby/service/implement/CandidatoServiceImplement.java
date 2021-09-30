@@ -5,17 +5,17 @@ import com.suarez.TestMoby.repository.CandidatoPorTecnologiaRepository;
 import com.suarez.TestMoby.repository.CandidatoRepository;
 import com.suarez.TestMoby.service.CandidatoService;
 
-import lombok.extern.java.Log;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Log
+
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
-    @Autowired
+    /*@Autowired
     private CandidatoRepository candidatoRepository;
 
     @Autowired
@@ -31,7 +31,7 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Override
     public List<Candidato> getCandidatosPorTecnologia(String tecno) {
         return candidatoRepository.buscarTecnologia(tecno);
-    }
+    }*/
 
 
 }

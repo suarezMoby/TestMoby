@@ -8,16 +8,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @Builder
-@Data
 @NoArgsConstructor
 public class CandidatoDto {
+    @Id
+    @Column(name = "id_candidato", nullable = false)
+    private Long idCandidato;
 
     private Integer id;
     private String nombre;
@@ -28,6 +32,8 @@ public class CandidatoDto {
     private Integer aniosDeExperiencia;
 
     List<TecnologiaDto> tecnologias;
+
+
 
 
 }
