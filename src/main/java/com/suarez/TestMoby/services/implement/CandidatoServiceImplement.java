@@ -1,4 +1,6 @@
 package com.suarez.TestMoby.services.implement;
 
-public class CandidatoServiceImplement {
+import com.suarez.TestMoby.services.CandidatoService;
+
+public class CandidatoServiceImplement implements CandidatoService {
 }

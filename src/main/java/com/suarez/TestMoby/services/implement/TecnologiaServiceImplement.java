@@ -1,4 +1,6 @@
 package com.suarez.TestMoby.services.implement;
 
-public class TecnologiaServiceImplement {
+import com.suarez.TestMoby.services.TecnologiaService;
+
+public class TecnologiaServiceImplement implements TecnologiaService {
 }
