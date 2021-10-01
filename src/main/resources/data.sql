@@ -28,8 +28,8 @@ INSERT INTO candidato (nombre, apellido, tipo, dni, fecha_nacimiento) VALUES
 
   DROP TABLE IF EXISTS candidato_x_tecnologia;
 
-      CREATE TABLE candidato_x_tecnologia (
-        id_candidato_x_tecnologia INT AUTO_INCREMENT  PRIMARY KEY,
+      CREATE TABLE candidato_por_tecnologia (
+        id_candidato_por_tecnologia INT AUTO_INCREMENT  PRIMARY KEY,
         id_candidato INT NOT NULL,
         id_tecnologia INT NOT NULL,
         anios_experiencia INT NOT NULL,
@@ -37,6 +37,6 @@ INSERT INTO candidato (nombre, apellido, tipo, dni, fecha_nacimiento) VALUES
         CONSTRAINT `FK_tecnologia` FOREIGN KEY (`id_tecnologia`) REFERENCES `tecnologia` (`id`);
       );
 
-      INSERT INTO tecnologia (id_candidato, id_tecnologia, anios_experiencia) VALUES
+      INSERT INTO candidato_por_tecnologia (id_candidato, id_tecnologia, anios_experiencia) VALUES
         ('1', '2', '4'),
         ('2', '1', '2');

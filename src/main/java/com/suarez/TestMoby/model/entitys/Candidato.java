@@ -1,6 +1,11 @@
 package com.suarez.TestMoby.model.entitys;
 
 import com.suarez.TestMoby.model.enums.Tipo;
+import jdk.jfr.DataAmount;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +17,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name="candidato")
 public class Candidato implements Serializable {
 
