@@ -1,4 +1,4 @@
-package com.suarez.TestMoby.model;
+package com.suarez.TestMoby.model.enums;
 
 public enum Tipo {
 
@@ -8,7 +8,7 @@ public enum Tipo {
 
     private final String string;
 
-    TipoDocumento(final String string)
+    Tipo(final String string)
     {
         this.string = string;
     }
