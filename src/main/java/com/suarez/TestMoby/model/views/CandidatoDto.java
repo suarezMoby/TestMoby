@@ -1,5 +1,6 @@
 package com.suarez.TestMoby.model.views;
 
+import com.suarez.TestMoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.TestMoby.model.entitys.Tecnologia;
 import com.suarez.TestMoby.model.enums.Tipo;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,8 @@ public class CandidatoDto {
     private Tipo tipo;
     private Integer dni;
     private Date fechaNacimiento;
+    private CandidatoPorTecnologia candidatoPorTecnologia;
 
     private List<Tecnologia> tecnologias;
+
 }
