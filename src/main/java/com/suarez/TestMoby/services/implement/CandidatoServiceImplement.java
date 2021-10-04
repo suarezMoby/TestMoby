@@ -1,18 +1,7 @@
 package com.suarez.TestMoby.services.implement;
 
-import com.suarez.TestMoby.model.entitys.Candidato;
-import com.suarez.TestMoby.model.entitys.CandidatoPorTecnologia;
-import com.suarez.TestMoby.model.entitys.Tecnologia;
-import com.suarez.TestMoby.model.views.CandidatoDto;
-import com.suarez.TestMoby.repository.CandidatoRepository;
 import com.suarez.TestMoby.services.CandidatoService;
-import com.suarez.TestMoby.services.CandidatoXTecnologiaService;
-import com.suarez.TestMoby.services.TecnologiaService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CandidatoServiceImplement implements CandidatoService {

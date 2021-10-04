@@ -19,8 +19,8 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "candidatos_nueva")
+//@AllArgsConstructor
+@Table(name = "candidato_nuevo")
 public class CandidatoNuevo implements Serializable {
 
     @Id
@@ -38,16 +38,10 @@ public class CandidatoNuevo implements Serializable {
 
     private Date fechaDeNacimiento;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     @Builder
-    public CandidatoNuevo(Integer id, String nombre, String apellido, Tipo tipo, String numeroDoc, String documento, Date fechaDeNacimiento) {
+    public CandidatoNuevo(Integer id, String nombre, String apellido, Tipo tipo, String numeroDoc,
+                          Date fechaDeNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
