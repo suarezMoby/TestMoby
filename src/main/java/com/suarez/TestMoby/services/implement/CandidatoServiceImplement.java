@@ -8,7 +8,6 @@ import com.suarez.TestMoby.repository.CandidatoRepository;
 import com.suarez.TestMoby.services.CandidatoService;
 import com.suarez.TestMoby.services.CandidatoXTecnologiaService;
 import com.suarez.TestMoby.services.TecnologiaService;
-import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,16 +17,16 @@ import java.util.List;
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
-    @Autowired
+  /*  @Autowired
     private CandidatoRepository candidatoRepository;
 
     @Autowired
     TecnologiaService tecnologiaService;
 
     @Autowired
-    CandidatoXTecnologiaService candidatoXTecnologiaService;
+    CandidatoXTecnologiaService candidatoXTecnologiaService;*/
 
-    @Override
+    /*@Override
     public List<CandidatoDto> findByTecnologia(String tecnologia) {
        List<Candidato> listaCandidato = (List<Candidato>) candidatoRepository.findAll();
         List<CandidatoDto> listaCandidatoDto = new ArrayList<>();
@@ -51,6 +50,5 @@ public class CandidatoServiceImplement implements CandidatoService {
             }
         }
         return listaCandidatoDto;
-    }
-
+    }*/
 }

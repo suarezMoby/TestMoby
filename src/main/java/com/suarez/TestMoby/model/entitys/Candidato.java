@@ -24,7 +24,7 @@ import java.util.Date;
 @Table(name="candidato")
 public class Candidato implements Serializable {
 
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

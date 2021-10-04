@@ -14,9 +14,9 @@ public class CandidatoXTecnologiaServiceImplement implements CandidatoXTecnologi
     @Autowired
     CandidatoXTecnologiaRepository candidatoXTecnologiaRepository;
 
-    @Override
+  /*  @Override
     public List<CandidatoPorTecnologia> candidatosByTecnologia(Integer idTecnologia) {
 
         return candidatoXTecnologiaRepository.candidatosByTecnologia(idTecnologia);
-    }
+    }*/
 }
