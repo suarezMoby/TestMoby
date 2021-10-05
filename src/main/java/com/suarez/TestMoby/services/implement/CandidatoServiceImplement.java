@@ -37,7 +37,7 @@ public class CandidatoServiceImplement implements CandidatoService {
 
     @Override
     public List<CandidatoDto> findByTecnologia(String tecnologia) {
-       List<Candidato> listaCandidato = (List<Candidato>) candidatoRepository.findAll();
+       List<Candidato> listaCandidato = candidatoRepository.findAll();
         List<CandidatoDto> listaCandidatoDto = new ArrayList<>();
         Tecnologia tecnologia1 = tecnologiaService.findByName(tecnologia);
         List<CandidatoPorTecnologia> candidatoPorTecnologiaList = candidatoXTecnologiaService.candidatosByTecnologia(tecnologia1.getId());

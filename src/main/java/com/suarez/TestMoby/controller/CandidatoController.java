@@ -35,10 +35,10 @@ public class CandidatoController {
     public ResponseEntity<Boolean> crearCandidato(@RequestBody CrearCandidatoDto dto) throws ParseException {
         return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
     }
-    /*@GetMapping(value = "/listarCandidatos/{tecnologia}")
+    @GetMapping(value = "/listarCandidatos/{tecnologia}")
     public ResponseEntity<List<CandidatoDto>> buscarCandidato(@RequestParam String tecnologia) {
         return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
-    }*/
+    }
 
    
 }

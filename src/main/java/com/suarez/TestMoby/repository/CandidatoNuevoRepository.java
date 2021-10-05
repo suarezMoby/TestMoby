@@ -15,8 +15,5 @@ public interface CandidatoNuevoRepository extends JpaRepository<CandidatoNuevo, 
 
     boolean existsByDocumento(String documento);
 
-   @Query(value = "SELECT * FROM candidato JOIN candidato_x_tecnologia USING(id_candidato_x_tecnologia) " +
-            "JOIN tecnologias USING(id_tecnologia)" +
-            "where tecnologias.nombre =?1", nativeQuery = true)
-    List<CandidatoDto>findByTecnologia(String tecnologia);
+
 }
