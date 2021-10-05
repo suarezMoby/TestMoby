@@ -15,8 +15,8 @@ import lombok.ToString;
 @ToString
 public class CandidatoPorTecnologiaDto {
 
-    private Integer id;
-    private Candidato candidato;
-    private Tecnologia tecnologia;
+    private Integer idCandidatoPorTecnologia;
+    private Candidato idCandidato;
+    private Tecnologia idTecnologia;
     private Integer aniosExperiencia;
 }

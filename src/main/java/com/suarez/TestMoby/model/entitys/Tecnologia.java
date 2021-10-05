@@ -20,13 +20,13 @@ import javax.persistence.Table;
 @Table(name = "tecnologia")
 public class Tecnologia {
 
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tecnologia")
-    private Integer id;
+    private Integer idTecnologia;
 
-    @Column(name = "nombre")
-    private String nombre;
+     @Column(name = "nombre")
+    private String nombreTecnologia;
 
     @Column(name = "version")
     private String version;
