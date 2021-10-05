@@ -5,6 +5,8 @@ import com.suarez.TestMoby.model.views.CrearCandidatoDto;
 import com.suarez.TestMoby.services.CandidatoNuevoService;
 import com.suarez.TestMoby.services.CandidatoService;
 import lombok.NonNull;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.util.List;
 
+@Log
 @RequestMapping(value = "/api/candidato")
 @RestController
 public class CandidatoController {

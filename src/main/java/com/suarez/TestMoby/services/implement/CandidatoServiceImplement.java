@@ -8,6 +8,7 @@ import com.suarez.TestMoby.repository.CandidatoRepository;
 import com.suarez.TestMoby.services.CandidatoService;
 import com.suarez.TestMoby.services.CandidatoXTecnologiaService;
 import com.suarez.TestMoby.services.TecnologiaService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
@@ -32,8 +34,11 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     CandidatoXTecnologiaService candidatoXTecnologiaService;
 
+
+
     @Override
     public Candidato createCandidato(Candidato candidato) {
+        log.info("Este es el nombre del candidato" + candidato.getNombre());
         return candidatoRepository.save(candidato);
     }
 
@@ -43,6 +48,7 @@ public class CandidatoServiceImplement implements CandidatoService {
                 .orElseThrow(
                         () -> new EntityNotFoundException("No se encontró el candidato - id: " + id));
         candidato.setEstado(DESHABILITADO);
+        log.info("El candidato se deshabilito " + candidato.getEstado());
         return candidatoRepository.save(candidato);    }
 
 
