@@ -11,6 +11,10 @@ import java.util.List;
 @Repository
 public interface CandidatoRepository extends JpaRepository<Candidato, Integer> {
 
+    @Query(value = "INSERT INTO candidato ('nombre', 'apellido', 'tipo', 'dni', 'fecha_nacimiento')" +
+            "VALUE ?1%",nativeQuery = true)
+    Candidato createCandidato(Candidato candidato);
+
     @Query(value ="UPDATE candidato  WHERE candidato.id_candidato LIKE ?1% ", nativeQuery = true)
     Candidato actualizarEstadoDeCandidato(Integer id);
 
