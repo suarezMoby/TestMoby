@@ -19,16 +19,15 @@ import java.util.List;
 public class CandidatoServiceImplement implements CandidatoService {
 
 
-    public static final int  DESHABILITADO = 0;
+    public static final int DESHABILITADO = 0;
     public static final int HABILITADO = 1;
 
 
     @Autowired
     CandidatoRepository candidatoRepository;
 
-
-   @Autowired
-   TecnologiaService tecnologiaService;
+    @Autowired
+    TecnologiaService tecnologiaService;
 
     @Autowired
     CandidatoXTecnologiaService candidatoXTecnologiaService;
@@ -44,21 +43,19 @@ public class CandidatoServiceImplement implements CandidatoService {
                 .orElseThrow(
                         () -> new EntityNotFoundException("No se encontró el candidato - id: " + id));
         candidato.setEstado(DESHABILITADO);
-        return candidatoRepository.save(candidato);
-    }
-
+        return candidatoRepository.save(candidato);    }
 
 
     @Override
     public List<CandidatoDto> findByTecnologia(String tecnologia) {
-       List<Candidato> listaCandidato = candidatoRepository.findAll();
+        List<Candidato> listaCandidato = candidatoRepository.findAll();
         List<CandidatoDto> listaCandidatoDto = new ArrayList<>();
         Tecnologia tecnologia1 = tecnologiaService.findByName(tecnologia);
         List<CandidatoPorTecnologia> candidatoPorTecnologiaList = candidatoXTecnologiaService.candidatosByTecnologia(tecnologia1.getIdTecnologia());
 
-        for(Candidato candidato : listaCandidato){
-            for(CandidatoPorTecnologia candidatoPorTecnologia : candidatoPorTecnologiaList ){
-                if(candidatoPorTecnologia.getCandidato().getIdCandidato()==candidato.getIdCandidato()){
+        for (Candidato candidato : listaCandidato) {
+            for (CandidatoPorTecnologia candidatoPorTecnologia : candidatoPorTecnologiaList) {
+                if (candidatoPorTecnologia.getCandidato().getIdCandidato() == candidato.getIdCandidato()) {
                     CandidatoDto candidatoDto = CandidatoDto.builder()
                             .id(candidato.getIdCandidato())
                             .nombre(candidato.getNombre())
