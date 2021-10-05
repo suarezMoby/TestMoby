@@ -1,22 +1,21 @@
 package com.suarez.TestMoby.services.implement;
 
 import com.suarez.TestMoby.exception.ExisteDocException;
-import com.suarez.TestMoby.model.entitys.Candidato;
 import com.suarez.TestMoby.model.entitys.CandidatoNuevo;
 import com.suarez.TestMoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.TestMoby.model.entitys.Tecnologia;
-import com.suarez.TestMoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.TestMoby.model.views.CrearCandidatoDto;
 import com.suarez.TestMoby.model.views.TecnologiaDto;
 import com.suarez.TestMoby.repository.CandidatoNuevoRepository;
-import com.suarez.TestMoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.TestMoby.services.CandidatoNuevoService;
 import com.suarez.TestMoby.services.TecnologiaService;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 
+@Log
 @Service
 public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
 
@@ -29,10 +28,12 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
     @Override
     public Boolean guardar(CrearCandidatoDto candidatoDto) throws ParseException {
         Integer id = cargarCandidato(candidatoDto).getIdCandidatoNuevo();
+        log.info("Este es el Id del candidato" + id.toString());
         return candidatoNuevoRepository.existsById(id);
     }
     @Override
     public boolean existePorDocumento(String documento) {
+        log.info("Este es el nombre del candidato" + documento.toString());
         return candidatoNuevoRepository.existsByDocumento(documento);
     }
     @Override

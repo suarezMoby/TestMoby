@@ -4,10 +4,15 @@ import com.suarez.TestMoby.model.views.CandidatoDto;
 import com.suarez.TestMoby.model.views.CrearCandidatoDto;
 import com.suarez.TestMoby.services.CandidatoNuevoService;
 import com.suarez.TestMoby.services.CandidatoService;
+import lombok.NonNull;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.util.List;
 
+@Log
 @RequestMapping(value = "/api/candidato")
 @RestController
 public class CandidatoController {
@@ -32,10 +38,16 @@ public class CandidatoController {
     public ResponseEntity<Boolean> crearCandidato(@RequestBody CrearCandidatoDto dto) throws ParseException {
         return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
     }
-   /* @GetMapping(value = "/listarCandidatos/{tecnologia}")
+
+    @DeleteMapping(value = "/eliminarCandidato/{idCandidato}")
+    public ResponseEntity<Integer> eliminarCandidato(@PathVariable @NonNull Integer idCandidato) {
+        return new ResponseEntity<>(candidatoService.actualizarEstadoDeCandidato(idCandidato).getIdCandidato(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/listarCandidatos/{tecnologia}")
     public ResponseEntity<List<CandidatoDto>> buscarCandidato(@RequestParam String tecnologia) {
         return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
-    }*/
+    }
 
    
 }
