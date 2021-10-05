@@ -10,5 +10,9 @@ public interface CandidatoService {
 
     public Candidato createCandidato(Candidato candidato);
 
+    Candidato actualizarEstadoDeCandidato(Integer id);
+
     List<CandidatoDto> findByTecnologia(String tecnologia);
+
+
 }

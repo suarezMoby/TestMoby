@@ -11,12 +11,16 @@ import com.suarez.TestMoby.services.TecnologiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
+
+    public static final int  DESHABILITADO = 0;
+    public static final int HABILITADO = 1;
 
 
     @Autowired
@@ -31,6 +35,15 @@ public class CandidatoServiceImplement implements CandidatoService {
 
     @Override
     public Candidato createCandidato(Candidato candidato) {
+        return candidatoRepository.save(candidato);
+    }
+
+    @Override
+    public Candidato actualizarEstadoDeCandidato(Integer id) {
+        Candidato candidato = candidatoRepository.findById(id)
+                .orElseThrow(
+                        () -> new EntityNotFoundException("No se encontró el candidato - id: " + id));
+        candidato.setEstado(DESHABILITADO);
         return candidatoRepository.save(candidato);
     }
 

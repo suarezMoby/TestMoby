@@ -1,15 +1,12 @@
 package com.suarez.TestMoby.services.implement;
 
 import com.suarez.TestMoby.exception.ExisteDocException;
-import com.suarez.TestMoby.model.entitys.Candidato;
 import com.suarez.TestMoby.model.entitys.CandidatoNuevo;
 import com.suarez.TestMoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.TestMoby.model.entitys.Tecnologia;
-import com.suarez.TestMoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.TestMoby.model.views.CrearCandidatoDto;
 import com.suarez.TestMoby.model.views.TecnologiaDto;
 import com.suarez.TestMoby.repository.CandidatoNuevoRepository;
-import com.suarez.TestMoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.TestMoby.services.CandidatoNuevoService;
 import com.suarez.TestMoby.services.TecnologiaService;
 import org.springframework.beans.factory.annotation.Autowired;

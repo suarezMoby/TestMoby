@@ -48,4 +48,6 @@ public class Candidato implements Serializable {
     @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 
+    private int estado;
+
 }
