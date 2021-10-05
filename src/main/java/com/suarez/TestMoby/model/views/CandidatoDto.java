@@ -23,7 +23,7 @@ public class CandidatoDto {
     private String nombre;
     private String apellido;
     private Tipo tipo;
-    private Integer dni;
+    private String dni;
     private Date fechaNacimiento;
     private CandidatoPorTecnologia candidatoPorTecnologia;
 

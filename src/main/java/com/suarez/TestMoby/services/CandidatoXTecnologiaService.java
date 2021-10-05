@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CandidatoXTecnologiaService {
 
-    /*public List<CandidatoPorTecnologia> candidatosByTecnologia(Integer idTecnologia);*/
+    public List<CandidatoPorTecnologia> candidatosByTecnologia(Integer idTecnologia);
 }

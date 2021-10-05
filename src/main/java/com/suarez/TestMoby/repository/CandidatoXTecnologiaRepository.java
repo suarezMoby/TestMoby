@@ -13,6 +13,6 @@ import java.util.List;
 public interface CandidatoXTecnologiaRepository extends JpaRepository<CandidatoPorTecnologia,Integer> {
 
 
-    /*@Query(value = "SELECT * FROM candidatosPorTecnologia WHERE id_tecnologia = ?1",nativeQuery = true)
-    List<CandidatoPorTecnologia>candidatosByTecnologia(Integer idTecnologia);*/
+    @Query(value = "SELECT * FROM candidatosPorTecnologia WHERE id_tecnologia = ?1",nativeQuery = true)
+    List<CandidatoPorTecnologia>candidatosByTecnologia(Integer idTecnologia);
 }

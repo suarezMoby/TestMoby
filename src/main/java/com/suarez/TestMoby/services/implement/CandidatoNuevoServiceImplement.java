@@ -1,6 +1,7 @@
 package com.suarez.TestMoby.services.implement;
 
 import com.suarez.TestMoby.exception.ExisteDocException;
+import com.suarez.TestMoby.model.entitys.Candidato;
 import com.suarez.TestMoby.model.entitys.CandidatoNuevo;
 import com.suarez.TestMoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.TestMoby.model.entitys.Tecnologia;
@@ -62,9 +63,10 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
             tecnologiaService.guardarTecnologiaPorCandidato(CandidatoPorTecnologia.builder()
                     .tecnologia(Tecnologia.builder()
                             .id(tecnologiaDto.getId())
+                            .nombre(tecnologiaDto.getNombre())
                             .version(tecnologiaDto.getVersion())
                             .build())
-                    .candidato(candidatoGuardado)
+                    .idCandidatoPorTecnologia(candidatoGuardado.getId())
                     .build()
             );
         }

@@ -15,11 +15,11 @@ public class TecnologiaServiceImplement implements TecnologiaService {
 
     }
 
-   /* @Autowired
+    @Autowired
     TecnologiaRepository tecnologiaRepository;
 
     @Override
     public Tecnologia findByName(String nombre){
         return  tecnologiaRepository.findByName(nombre);
-    }*/
+    }
 }
