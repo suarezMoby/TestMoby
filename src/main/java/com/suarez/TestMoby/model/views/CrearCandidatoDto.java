@@ -23,6 +23,5 @@ public class CrearCandidatoDto {
     private Date fechaDeNacimiento;
 
     List<TecnologiaDto> tecnologias;
-
 }
 

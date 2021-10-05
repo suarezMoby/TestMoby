@@ -25,14 +25,14 @@ import java.util.Date;
 @Table(name="candidato")
 public class Candidato implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_candidato")
     private Integer idCandidato;
 
-    @Column(name = "nombre")
+      @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "apellido")
@@ -45,7 +45,7 @@ public class Candidato implements Serializable {
     @Column(name = "dni")
     private String dni;
 
-    @Column(name = "decha_nacimiento")
+    @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 
 }

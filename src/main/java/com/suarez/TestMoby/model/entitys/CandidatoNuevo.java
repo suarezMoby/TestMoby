@@ -23,10 +23,10 @@ import java.util.Date;
 @Table(name = "candidato_nuevo")
 public class CandidatoNuevo implements Serializable {
 
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @Column(name = "id_candidato_nuevo", nullable = false)
+    private Integer idCandidatoNuevo;
 
     private String nombre;
 
@@ -40,9 +40,9 @@ public class CandidatoNuevo implements Serializable {
 
 
     @Builder
-    public CandidatoNuevo(Integer id, String nombre, String apellido, Tipo tipo, String numeroDoc,
+    public CandidatoNuevo(Integer idCandidatoNuevo, String nombre, String apellido, Tipo tipo, String numeroDoc,
                           Date fechaDeNacimiento) {
-        this.id = id;
+        this.idCandidatoNuevo = idCandidatoNuevo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipo = tipo;

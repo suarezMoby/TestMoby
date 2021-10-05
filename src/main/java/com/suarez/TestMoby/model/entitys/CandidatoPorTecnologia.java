@@ -24,14 +24,14 @@ import java.io.Serializable;
 @Table(name = "candidato_por_tecnologia")
 public class CandidatoPorTecnologia implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_candidato_por_tecnologia")
     private Integer idCandidatoPorTecnologia;
 
-    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
+     @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
     @ManyToOne
     private Candidato candidato;
 

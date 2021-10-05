@@ -24,17 +24,11 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
     CandidatoNuevoRepository candidatoNuevoRepository;
 
     @Autowired
-    CandidatoXTecnologiaRepository candidatoPorTecnologiaRepository;
-    @Autowired
-    Tecnologia tecnologia;
-    @Autowired
     TecnologiaService tecnologiaService;
-    @Autowired
-    CandidatoPorTecnologiaDto candidatoPorTecnologia;
 
     @Override
     public Boolean guardar(CrearCandidatoDto candidatoDto) throws ParseException {
-        Integer id = cargarCandidato(candidatoDto).getId();
+        Integer id = cargarCandidato(candidatoDto).getIdCandidatoNuevo();
         return candidatoNuevoRepository.existsById(id);
     }
     @Override
@@ -62,11 +56,11 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
 
             tecnologiaService.guardarTecnologiaPorCandidato(CandidatoPorTecnologia.builder()
                     .tecnologia(Tecnologia.builder()
-                            .id(tecnologiaDto.getId())
-                            .nombre(tecnologiaDto.getNombre())
+                            .idTecnologia(tecnologiaDto.getId())
+                            .nombreTecnologia(tecnologiaDto.getNombre())
                             .version(tecnologiaDto.getVersion())
                             .build())
-                    .idCandidatoPorTecnologia(candidatoGuardado.getId())
+                    .idCandidatoPorTecnologia(candidatoGuardado.getIdCandidatoNuevo())
                     .build()
             );
         }

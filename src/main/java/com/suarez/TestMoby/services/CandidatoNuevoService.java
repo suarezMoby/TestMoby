@@ -9,7 +9,7 @@ public interface CandidatoNuevoService {
 
     Boolean guardar(CrearCandidatoDto dto) throws ParseException;
 
-    public CandidatoNuevo cargarCandidato(CrearCandidatoDto dto);
+    CandidatoNuevo cargarCandidato(CrearCandidatoDto dto);
 
     boolean existePorDocumento(String documento);
 }
