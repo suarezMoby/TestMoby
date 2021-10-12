@@ -52,6 +52,7 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
         guardarListaTecnologias(candidatoDto, candidatoGuardado);
         return candidatoGuardado;
     }
+
     public void guardarListaTecnologias(CrearCandidatoDto candidatoDto, CandidatoNuevo candidatoGuardado) {
         for (TecnologiaDto tecnologiaDto : candidatoDto.getTecnologias()) {
 

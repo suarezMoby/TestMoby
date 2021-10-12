@@ -5,7 +5,6 @@ import com.suarez.testmoby.model.views.CrearCandidatoDto;
 import com.suarez.testmoby.services.CandidatoNuevoService;
 import com.suarez.testmoby.services.CandidatoService;
 import lombok.NonNull;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.util.List;
 
-@Log
+
 @RequestMapping(value = "/api/candidato")
 @RestController
 public class CandidatoController {
@@ -33,7 +32,7 @@ public class CandidatoController {
     private CandidatoNuevoService candidatoNuevoService;
 
 
-    @PostMapping(value = "/candidato/crear")
+    @PostMapping(value = "/crear")
     public ResponseEntity<Boolean> crearCandidato(@RequestBody CrearCandidatoDto dto) throws ParseException {
         return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
     }
