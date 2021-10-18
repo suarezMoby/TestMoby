@@ -19,10 +19,5 @@ public class TecnologiaController {
     @Autowired
     private TecnologiaService tecnologiaService;
 
-    @PostMapping(value = "/crear")
-    public ResponseEntity<Boolean> crearTecnologia(@RequestBody CrearCandidatoDto dto) throws ParseException {
-        return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
-    }
-
 
 }
