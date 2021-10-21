@@ -12,17 +12,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class TecnologiaServiceImplement implements TecnologiaService {
 
-    @Override
-    public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoPorTecnologia) {
-
-    }
 
     @Autowired
     TecnologiaRepository tecnologiaRepository;
 
     @Override
+    public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoPorTecnologia) {
+
+    }
+
+    @Override
     public Tecnologia findByName(String nombre){
-        log.info("Este es el nombre de la tecnologia es" + nombre.toString());
+        log.info("Este es el nombre de la tecnologia es" + nombre);
         return  tecnologiaRepository.findByName(nombre);
     }
 }

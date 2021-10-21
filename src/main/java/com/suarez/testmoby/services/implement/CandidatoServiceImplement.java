@@ -61,7 +61,7 @@ public class CandidatoServiceImplement implements CandidatoService {
 
         for (Candidato candidato : listaCandidato) {
             for (CandidatoPorTecnologia candidatoPorTecnologia : candidatoPorTecnologiaList) {
-                if (candidatoPorTecnologia.getCandidato().getIdCandidato() == candidato.getIdCandidato()) {
+                if (candidatoPorTecnologia.getCandidato().getIdCandidato().equals(candidato.getIdCandidato())) {
                     CandidatoDto candidatoDto = CandidatoDto.builder()
                             .id(candidato.getIdCandidato())
                             .nombre(candidato.getNombre())

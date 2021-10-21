@@ -33,7 +33,7 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
     }
     @Override
     public boolean existePorDocumento(String documento) {
-        log.info("Este es el nombre del candidato" + documento.toString());
+        log.info("Este es el nombre del candidato" + documento);
         return candidatoNuevoRepository.existsByDocumento(documento);
     }
     @Override
