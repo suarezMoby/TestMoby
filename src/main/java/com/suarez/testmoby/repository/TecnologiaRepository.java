@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TecnologiaRepository extends JpaRepository<Tecnologia,Integer> {
 
-
-    @Query(value ="SELECT * FROM tecnologia  where tecnologia.nombre LIKE '?1%",nativeQuery = true)
     Tecnologia findByName(String nombre);
 }
