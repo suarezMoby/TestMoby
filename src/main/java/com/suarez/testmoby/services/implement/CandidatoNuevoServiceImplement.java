@@ -23,6 +23,9 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
     CandidatoNuevoRepository candidatoNuevoRepository;
 
     @Autowired
+    CandidatoNuevoService candidatoNuevoService;
+
+    @Autowired
     TecnologiaService tecnologiaService;
 
     @Override
@@ -32,13 +35,13 @@ public class CandidatoNuevoServiceImplement implements CandidatoNuevoService {
         return candidatoNuevoRepository.existsById(id);
     }
     @Override
-    public boolean existePorDocumento(String documento) {
-        log.info("Este es el nombre del candidato" + documento);
-        return candidatoNuevoRepository.existsByDocumento(documento);
+    public boolean findByDocument(String document) {
+        log.info("Este es el nombre del candidato" + document);
+        return candidatoNuevoService.findByDocument(document);
     }
     @Override
     public CandidatoNuevo cargarCandidato(CrearCandidatoDto candidatoDto)  {
-        if (existePorDocumento(candidatoDto.getDni()))
+        if (findByDocument(candidatoDto.getDni()))
             throw new ExisteDocException();
 
         CandidatoNuevo candidato = CandidatoNuevo.builder()
