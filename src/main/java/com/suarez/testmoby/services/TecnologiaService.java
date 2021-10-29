@@ -5,7 +5,7 @@ import com.suarez.testmoby.model.entitys.Tecnologia;
 
 public interface TecnologiaService {
     
-   Tecnologia findByName(String nombre);
+   Tecnologia findByName(String name);
 
   public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoXTecnologia);
 }

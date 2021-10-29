@@ -12,11 +12,11 @@ import java.util.List;
 public class CandidatoXTecnologiaServiceImplement implements CandidatoXTecnologiaService {
 
     @Autowired
-    CandidatoXTecnologiaRepository candidatoXTecnologiaRepository;
+    CandidatoXTecnologiaService candidatoXTecnologiaService;
 
     @Override
-    public List<CandidatoPorTecnologia> candidatosByTecnologia(Integer idTecnologia) {
+    public List<CandidatoPorTecnologia> findByIdTecnologia(Integer idTecnologia) {
 
-        return candidatoXTecnologiaRepository.candidatosByTecnologia(idTecnologia);
+        return candidatoXTecnologiaService.findByIdTecnologia(idTecnologia);
     }
 }

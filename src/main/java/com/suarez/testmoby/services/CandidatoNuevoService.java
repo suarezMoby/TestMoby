@@ -11,5 +11,5 @@ public interface CandidatoNuevoService {
 
     CandidatoNuevo cargarCandidato(CrearCandidatoDto dto);
 
-    boolean existePorDocumento(String documento);
+    boolean findByDocument(String document);
 }

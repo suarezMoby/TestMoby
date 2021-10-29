@@ -16,14 +16,17 @@ public class TecnologiaServiceImplement implements TecnologiaService {
     @Autowired
     TecnologiaRepository tecnologiaRepository;
 
+    @Autowired
+    TecnologiaService tecnologiaService;
+
     @Override
     public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoPorTecnologia) {
 
     }
 
     @Override
-    public Tecnologia findByName(String nombre){
-        log.info("Este es el nombre de la tecnologia es" + nombre);
-        return  tecnologiaRepository.findByName(nombre);
+    public Tecnologia findByName(String name){
+        log.info("Este es el nombre de la tecnologia es" + name);
+        return  tecnologiaService.findByName(name);
     }
 }
