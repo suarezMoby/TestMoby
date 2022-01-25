@@ -1,5 +1,6 @@
 package com.suarez.testmoby.testUtils;
 
+import com.google.gson.Gson;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 
@@ -56,5 +57,24 @@ public class TestEntityFactory {
         listaTecnologiasDTO.add(getTecnologiaDtoConId());
 
         return listaTecnologiasDTO;
+    }
+
+    /** TecnologiaDto con Id Json **/
+    public static String getTecnologiaDtoConIdJson(){
+        return new Gson().toJson(getTecnologiaDtoConId());
+    }
+
+    /** TecnologiaDto con Id modificado Json **/
+    public static String getTecnologiaDTOConIdModificadoJson(){
+        return new Gson().toJson(getTecnologiaDtoConIdModificado());
+    }
+
+    /** TecnologiaDto con Id modificado **/
+    public static TecnologiaDto getTecnologiaDtoConIdModificado(){
+        return TecnologiaDto.builder()
+                .id(2)
+                .nombre("Java")
+                .version("9")
+                .build();
     }
 }
