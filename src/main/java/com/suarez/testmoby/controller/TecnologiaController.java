@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/*Para Acceder a Swagger hay que ingresar en http://localhost:8080/swagger-ui.htm con el proyecto corriendo*/
+
 @RequestMapping(value = "/api/tecnologia")
 @RestController
 @Api(tags = "Tecnologia")
