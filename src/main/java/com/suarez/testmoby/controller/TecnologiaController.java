@@ -1,13 +1,11 @@
 package com.suarez.testmoby.controller;
 
-import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 import com.suarez.testmoby.services.TecnologiaService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +37,7 @@ public class TecnologiaController {
         return new ResponseEntity<>(tecnologiaService.guardarTecnologia(tecnologiaDto), HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/esitarTecnologia")
+    @PostMapping(value = "/editarTecnologia")
     @ApiOperation(value = "Editar Tecnologia", notes = "Servicio para editar una tecnologia")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Tecnologia editada correctamente"),
             @ApiResponse(code = 404, message = "Tecnologia no encontrada")})
