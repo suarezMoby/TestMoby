@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
 @Log
 @Service
 public class TecnologiaServiceImplement implements TecnologiaService {
@@ -39,6 +38,16 @@ public class TecnologiaServiceImplement implements TecnologiaService {
         Tecnologia tecnologia = tecnologiaRepository.save(nuevo);
 
         return modelMappper.map(tecnologia, TecnologiaDto.class);
+    }
+
+    @Override
+    public TecnologiaDto editarTecnologia(TecnologiaDto tecnologiaDTO) {
+        Tecnologia nuevo = modelMappper.map(tecnologiaDTO, Tecnologia.class);
+
+        Tecnologia tecnologia = tecnologiaRepository.save(nuevo);
+
+        return modelMappper.map(tecnologia, TecnologiaDto.class);
+
     }
 
     @Override

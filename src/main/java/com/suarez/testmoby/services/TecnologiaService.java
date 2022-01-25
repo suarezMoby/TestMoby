@@ -11,4 +11,7 @@ public interface TecnologiaService {
   public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoXTecnologia);
 
     public TecnologiaDto guardarTecnologia(TecnologiaDto tecnologiaDto);
+
+
+    public TecnologiaDto editarTecnologia(TecnologiaDto tecnologiaDTO);
 }
