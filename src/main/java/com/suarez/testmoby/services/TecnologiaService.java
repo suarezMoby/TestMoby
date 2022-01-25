@@ -4,6 +4,8 @@ import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 
+import java.util.List;
+
 public interface TecnologiaService {
     
    Tecnologia findByName(String name);
@@ -16,4 +18,6 @@ public interface TecnologiaService {
     public TecnologiaDto editarTecnologia(TecnologiaDto tecnologiaDTO);
 
     public void eliminarTecnologiaPorId(Integer idTecnologia);
+
+    List<TecnologiaDto> traerTecnologias();
 }

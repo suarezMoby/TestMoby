@@ -11,6 +11,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
+import java.util.List;
+
 
 @Log
 @Service
@@ -60,6 +63,18 @@ public class TecnologiaServiceImplement implements TecnologiaService {
             tecnologiaRepository.deleteById(idTecnologia);
             log.info("Se elimino la tecnologia");
         }
+    }
+
+    @Override
+    public List<TecnologiaDto> traerTecnologias() {
+        List<Tecnologia> tecnologias = tecnologiaRepository.findAll();
+        List<TecnologiaDto> tecnologiasDto = new LinkedList<>();
+
+        for (Tecnologia tecnologia: tecnologias) {
+            tecnologiasDto.add(modelMappper.map(tecnologia, TecnologiaDto.class));
+        }
+
+        return tecnologiasDto;
     }
 
     @Override

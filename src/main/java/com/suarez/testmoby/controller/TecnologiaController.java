@@ -12,11 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RequestMapping(value = "/api/tecnologia")
 @RestController
@@ -49,5 +52,13 @@ public class TecnologiaController {
     public ResponseEntity eliminarTecnologiaPorId(@PathVariable Integer idTecnologia) {
         tecnologiaService.eliminarTecnologiaPorId(idTecnologia);
         return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/traerTecnologias")
+    @ApiOperation(value = "Traer Tecnologias", notes = "Servicio para traer una lista de tecnologias")
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Lista obtenida correctamente"),
+            @ApiResponse(code = 404, message = "Tecnologia no encontrada")})
+    public ResponseEntity<List<TecnologiaDto>> traerTecnologias(){
+        return new ResponseEntity<>(tecnologiaService.traerTecnologias(), HttpStatus.OK);
     }
 }
