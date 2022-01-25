@@ -14,4 +14,6 @@ public interface TecnologiaService {
 
 
     public TecnologiaDto editarTecnologia(TecnologiaDto tecnologiaDTO);
+
+    public void eliminarTecnologiaPorId(Integer idTecnologia);
 }

@@ -1,5 +1,6 @@
 package com.suarez.testmoby.services.implement;
 
+import com.suarez.testmoby.exception.NoSeEncontroIdException;
 import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.TecnologiaDto;
@@ -48,6 +49,17 @@ public class TecnologiaServiceImplement implements TecnologiaService {
 
         return modelMappper.map(tecnologia, TecnologiaDto.class);
 
+    }
+
+    @Override
+    public void eliminarTecnologiaPorId(Integer idTecnologia) {
+        Tecnologia tecnologia = tecnologiaRepository.findById(idTecnologia).
+                orElseThrow(()-> new NoSeEncontroIdException("No se encontro el Id"));
+
+        if(tecnologia != null){
+            tecnologiaRepository.deleteById(idTecnologia);
+            log.info("Se elimino la tecnologia");
+        }
     }
 
     @Override
