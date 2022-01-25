@@ -30,7 +30,7 @@ public class TecnologiaController {
     @ApiOperation(value = "Guardar Tecnologia", notes = "Servicio para guardar una tecnologia nueva")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Tecnologia guardada correctamente"),
             @ApiResponse(code = 400, message = "Solicitud invalida")})
-    public ResponseEntity<TecnologiaDto> guardarTecnologia(@RequestBody TecnologiaDto tecnologiaDto){
+    public ResponseEntity<TecnologiaDto> guardarTecnologia(@RequestBody TecnologiaDto tecnologiaDto) {
         return new ResponseEntity<>(tecnologiaService.guardarTecnologia(tecnologiaDto), HttpStatus.CREATED);
     }
 
@@ -38,13 +38,16 @@ public class TecnologiaController {
     @ApiOperation(value = "Editar Tecnologia", notes = "Servicio para editar una tecnologia")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Tecnologia editada correctamente"),
             @ApiResponse(code = 404, message = "Tecnologia no encontrada")})
-    public ResponseEntity<TecnologiaDto> editarTecnologia(@RequestBody TecnologiaDto tecnologiaDto){
+    public ResponseEntity<TecnologiaDto> editarTecnologia(@RequestBody TecnologiaDto tecnologiaDto) {
         return new ResponseEntity<>(tecnologiaService.editarTecnologia(tecnologiaDto), HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/eliminarTecnologiaPorId/{idTecnologia}")
-    public ResponseEntity eliminarTecnologiaPorId(@PathVariable Integer idTecnologia){
+    @ApiOperation(value = "Eliminar Tecnologia", notes = "Servicio para eliminar una tecnologia")
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Tecnologia eliminada correctamente"),
+            @ApiResponse(code = 404, message = "Tecnologia no encontrada")})
+    public ResponseEntity eliminarTecnologiaPorId(@PathVariable Integer idTecnologia) {
         tecnologiaService.eliminarTecnologiaPorId(idTecnologia);
-        return new ResponseEntity (HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
