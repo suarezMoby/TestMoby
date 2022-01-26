@@ -1,7 +1,10 @@
 package com.suarez.testmoby.testUtils;
 
 import com.google.gson.Gson;
+import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.Tecnologia;
+import com.suarez.testmoby.model.enums.Tipo;
+import com.suarez.testmoby.model.views.CandidatoDto;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 
 import java.util.LinkedList;
@@ -75,6 +78,30 @@ public class TestEntityFactory {
                 .id(2)
                 .nombre("Java")
                 .version("9")
+                .build();
+    }
+
+    /** CandidatoDto con Id **/
+    public static CandidatoDto getCandidatoDtoConId(){
+        return CandidatoDto.builder()
+                .id(1)
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .fechaNacimiento(null)
+                .build();
+    }
+
+    /** Candidato con Id **/
+    public static Candidato getCandidatoConId(){
+        return Candidato.builder()
+                .idCandidato(1)
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .fechaNacimiento(null)
                 .build();
     }
 }
