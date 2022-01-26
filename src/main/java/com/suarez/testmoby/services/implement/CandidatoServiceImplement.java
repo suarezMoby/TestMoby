@@ -1,5 +1,6 @@
 package com.suarez.testmoby.services.implement;
 
+import com.suarez.testmoby.exception.NoSeEncontroIdException;
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
@@ -9,6 +10,7 @@ import com.suarez.testmoby.services.CandidatoService;
 import com.suarez.testmoby.services.CandidatoXTecnologiaService;
 import com.suarez.testmoby.services.TecnologiaService;
 import lombok.extern.java.Log;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,8 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     CandidatoXTecnologiaService candidatoXTecnologiaService;
 
+    @Autowired
+    ModelMapper modelMapper;
 
 
     @Override
@@ -76,5 +80,19 @@ public class CandidatoServiceImplement implements CandidatoService {
             }
         }
         return listaCandidatoDto;
+    }
+
+    @Override
+    public CandidatoDto editarCandidato(CandidatoDto candidatoDto) {
+        if(candidatoDto.getId() == null){
+            throw new NoSeEncontroIdException("No se encontro el Id del candidato");
+        }
+        Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
+
+        Candidato candidato = candidatoRepository.save(nuevo);
+
+        log.info("Se modifico el candidato correctamente.");
+
+        return modelMapper.map(candidato, CandidatoDto.class);
     }
 }

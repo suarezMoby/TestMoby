@@ -62,5 +62,13 @@ public class CandidatoController {
         return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
     }
 
+    @PostMapping(value = "/editarCandidato")
+    @ApiOperation(value = "Editar Candidato", notes = "Servicio para editar un candidato")
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidatos editado correctamente"),
+            @ApiResponse(code = 404, message = "Candidato no encontrado")})
+    public ResponseEntity<CandidatoDto> modificarCandidato(@RequestBody CandidatoDto candidatoDTO){
+        return new ResponseEntity<> (candidatoService.editarCandidato(candidatoDTO), HttpStatus.OK);
+    }
+
    
 }

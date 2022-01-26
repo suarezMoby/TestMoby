@@ -13,5 +13,7 @@ public interface CandidatoService {
 
     List<CandidatoDto> findByTecnologia(String tecnologia);
 
+    CandidatoDto editarCandidato(CandidatoDto candidatoDto);
+
 
 }
