@@ -38,7 +38,7 @@ public class CandidatoController {
     private CandidatoNuevoService candidatoNuevoService;
 
 
-    @PostMapping(value = "/candidato/crear")
+    @PostMapping(value = "/crear")
     @ApiOperation(value = "Crear Candidato", notes = "Servicio para crear un candidato nuevo")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidato creado correctamente"),
     @ApiResponse(code = 400, message = "Solicitud invalida")})
