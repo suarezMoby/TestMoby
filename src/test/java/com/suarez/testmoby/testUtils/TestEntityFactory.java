@@ -5,8 +5,10 @@ import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.enums.Tipo;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CrearCandidatoDto;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,6 +71,11 @@ public class TestEntityFactory {
         return new Gson().toJson(getTecnologiaDtoConId());
     }
 
+    /** Candidato con Id Json **/
+    public static String getCandidatoConIdJson(){
+        return new Gson().toJson(getCandidatoConId());
+    }
+
     /** TecnologiaDto con Id modificado Json **/
     public static String getTecnologiaDTOConIdModificadoJson(){
         return new Gson().toJson(getTecnologiaDtoConIdModificado());
@@ -95,6 +102,17 @@ public class TestEntityFactory {
                 .build();
     }
 
+    /** CandidatoDto sin Id **/
+    public static CandidatoDto getCandidatoDtoSinId(){
+        return CandidatoDto.builder()
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .fechaNacimiento(null)
+                .build();
+    }
+
     /** Candidato con Id **/
     public static Candidato getCandidatoConId(){
         return Candidato.builder()
@@ -106,4 +124,38 @@ public class TestEntityFactory {
                 .fechaNacimiento(null)
                 .build();
     }
+
+    /** Candidato sin Id **/
+    public static Candidato getCandidatoSinId(){
+        return Candidato.builder()
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .fechaNacimiento(null)
+                .build();
+    }
+    /** crearCandidatoDto sin Id **/
+    public static CrearCandidatoDto getCrearCandidatoDtoSinId(){
+        return CrearCandidatoDto.builder()
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .tecnologias(Collections.emptyList())
+                .build();
+    }
+
+    /** crearCandidatoDto con Id **/
+    public static CandidatoDto getCrearCandidatoDtoConId(){
+        return CandidatoDto.builder()
+                .id(1)
+                .nombre("Danilo")
+                .apellido("Suarez")
+                .tipo(Tipo.DNI)
+                .dni("33102867")
+                .tecnologias(Collections.emptyList())
+                .build();
+    }
+
 }
