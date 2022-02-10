@@ -11,6 +11,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TestEntityFactory {
+
+
     /** TecnologiaDto **/
     public static TecnologiaDto getTecnologiaDtoSinId(){
         return TecnologiaDto.builder()
@@ -30,7 +32,7 @@ public class TestEntityFactory {
     public static Tecnologia getTecnologiaConId(){
         return Tecnologia.builder()
                 .idTecnologia(1)
-                .nombreTecnologia("Java")
+                .nombreTecnologia("java")
                 .version("8")
                 .build();
     }
@@ -39,7 +41,7 @@ public class TestEntityFactory {
     public static TecnologiaDto getTecnologiaDtoConId(){
         return TecnologiaDto.builder()
                 .id(1)
-                .nombre("Java")
+                .nombre("java")
                 .version("8")
                 .build();
     }
