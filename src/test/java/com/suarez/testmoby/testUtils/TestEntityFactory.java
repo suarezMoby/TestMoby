@@ -5,6 +5,7 @@ import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.enums.Tipo;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.model.views.CrearCandidatoDto;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 
@@ -96,6 +97,18 @@ public class TestEntityFactory {
                 .id(1)
                 .nombre("Danilo")
                 .apellido("Suarez")
+                .tipo(null)
+                .fechaNacimiento(null)
+                .dni("33102857")
+                .build();
+    }
+
+    /** CandidatoDto con Id **/
+    public static CandidatoDto getCandidatoDtoNuevo(){
+        return CandidatoDto.builder()
+                .id(1)
+                .nombre("Carlos")
+                .apellido("Suarez")
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
@@ -156,6 +169,40 @@ public class TestEntityFactory {
                 .dni("33102867")
                 .tecnologias(Collections.emptyList())
                 .build();
+    }
+
+    public static CandidatoPorTecnologiaDto getCandidatoPorTecnologiaDto(){
+        return CandidatoPorTecnologiaDto.builder()
+                .idCandidatoPorTecnologia(1)
+                .idCandidato(getCandidatoConId())
+                .idTecnologia(getTecnologiaConId())
+                .aniosExperiencia(4)
+                .build();
+    }
+
+    public static CandidatoDto getCandidatoDtoEditado(){
+        return CandidatoDto.builder()
+                .id(1)
+                .nombre("Natan")
+                .apellido("Suarez")
+                .tipo(null)
+                .fechaNacimiento(null)
+                .dni("33102857")
+                .build();
+
+    }
+
+    public static String getCandidatoDtoEditadoJson(){return new Gson().toJson(getCandidatoDtoEditado());}
+
+    public static List<CandidatoDto> getListaCandidatosDto(){
+
+        CandidatoDto candidatoDto = getCandidatoDtoConId();
+
+        List<CandidatoDto> candidatoDtoList = new LinkedList<>();
+
+        candidatoDtoList.add(candidatoDto);
+
+        return candidatoDtoList;
     }
 
 }
