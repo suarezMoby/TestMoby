@@ -77,6 +77,11 @@ public class TestEntityFactory {
         return new Gson().toJson(getCandidatoConId());
     }
 
+    /** CandidatoDto con Id Json **/
+    public static String getCandidatoDtoConIdJson(){
+        return new Gson().toJson(getCandidatoDtoConId());
+    }
+
     /** TecnologiaDto con Id modificado Json **/
     public static String getTecnologiaDTOConIdModificadoJson(){
         return new Gson().toJson(getTecnologiaDtoConIdModificado());

@@ -15,10 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConId;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(controllers = CandidatoServiceImplement.class)
@@ -36,17 +32,6 @@ class CandidatoServiceImplementTest {
     @Spy
     private ModelMapper modelMapper;
 
-
-    @Test
-    void createCandidato() {
-        Candidato candidatoEsperado = mock(Candidato.class);
-        when(candidatoRepository.save(candidatoEsperado)).thenReturn(candidatoEsperado);
-
-        Candidato candidatoGuardado = candidatoServiceImplement.createCandidato(candidatoEsperado);
-
-        verify(candidatoRepository,times(1)).save(candidatoEsperado);
-        assertNotNull(candidatoGuardado);
-    }
 
     @Test
     void actualizarEstadoDeCandidato() {

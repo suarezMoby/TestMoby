@@ -1,6 +1,5 @@
 package com.suarez.testmoby.controller;
 
-import com.google.gson.Gson;
 import com.suarez.testmoby.services.CandidatoNuevoService;
 import com.suarez.testmoby.services.CandidatoService;
 import org.junit.jupiter.api.Disabled;
@@ -15,8 +14,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConIdJson;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConIdJson;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoEditado;
-import static com.suarez.testmoby.testUtils.TestEntityFactory.getCrearCandidatoDtoSinId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoSinId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getListaCandidatosDto;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -39,12 +39,10 @@ class CandidatoControllerTest {
     @Test
     @WithMockUser
     void crearCandidato() throws Exception {
-        when(candidatoNuevoService.guardar(getCrearCandidatoDtoSinId())).thenReturn(true);
-        String candidatoJson = new Gson().toJson(getCrearCandidatoDtoSinId());
-
-        mockMvc.perform(post("/api/candidato/crear")
+        when(candidatoService.guardar(getCandidatoDtoSinId())).thenReturn(getCandidatoDtoConId());
+        mockMvc.perform(post("/api/candidato/crear", getCandidatoDtoConIdJson())
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(getCandidatoConIdJson()))
+                .content(getCandidatoDtoConIdJson()))
                 .andExpect(status().isCreated());
     }
 
