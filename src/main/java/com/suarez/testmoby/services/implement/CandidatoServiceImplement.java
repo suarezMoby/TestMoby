@@ -1,6 +1,5 @@
 package com.suarez.testmoby.services.implement;
 
-import com.suarez.testmoby.exception.NoSeEncontroIdException;
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
@@ -92,7 +91,7 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Override
     public CandidatoDto editarCandidato(CandidatoDto candidatoDto) {
         if(candidatoDto.getId() == null){
-            throw new NoSeEncontroIdException("No se encontro el Id del candidato");
+            log.error("No se encontro el Id del candidato");
         }
         Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
 
