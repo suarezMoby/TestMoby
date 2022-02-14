@@ -9,16 +9,18 @@ import com.suarez.testmoby.repository.CandidatoRepository;
 import com.suarez.testmoby.services.CandidatoService;
 import com.suarez.testmoby.services.CandidatoXTecnologiaService;
 import com.suarez.testmoby.services.TecnologiaService;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Log
+
+@Slf4j
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
@@ -39,11 +41,16 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     ModelMapper modelMapper;
 
-
     @Override
-    public Candidato createCandidato(Candidato candidato) {
-        log.info("Este es el nombre del candidato" + candidato.getNombre());
-        return candidatoRepository.save(candidato);
+    public CandidatoDto guardar(CandidatoDto candidatoDto) throws ParseException {
+        if(candidatoDto.getDni() == null){
+            log.error("Se debe incluir un dni");
+        }
+        Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
+        Candidato candidato = candidatoRepository.save(nuevo);
+        log.info("El candidato se guardo correctamente");
+
+        return modelMapper.map(candidato, CandidatoDto.class);
     }
 
     @Override
