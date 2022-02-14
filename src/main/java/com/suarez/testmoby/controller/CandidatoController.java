@@ -1,7 +1,6 @@
 package com.suarez.testmoby.controller;
 
 import com.suarez.testmoby.model.views.CandidatoDto;
-import com.suarez.testmoby.model.views.CrearCandidatoDto;
 import com.suarez.testmoby.services.CandidatoNuevoService;
 import com.suarez.testmoby.services.CandidatoService;
 import io.swagger.annotations.Api;
@@ -42,8 +41,8 @@ public class CandidatoController {
     @ApiOperation(value = "Crear Candidato", notes = "Servicio para crear un candidato nuevo")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidato creado correctamente"),
     @ApiResponse(code = 400, message = "Solicitud invalida")})
-    public ResponseEntity<Boolean> crearCandidato(@RequestBody CrearCandidatoDto dto) throws ParseException {
-        return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
+    public ResponseEntity<CandidatoDto> guardar(@RequestBody CandidatoDto candidatoDto) throws ParseException {
+        return new ResponseEntity<>(candidatoService.guardar(candidatoDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/eliminarCandidato/{idCandidato}")
