@@ -1,4 +1,4 @@
-package com.suarez.testmoby.configuration;
+/*package com.suarez.testmoby.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,4 +16,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic();
     }
-}
+}*/
