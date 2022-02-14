@@ -1,7 +1,6 @@
 package com.suarez.testmoby.controller;
 
 import com.suarez.testmoby.services.TecnologiaService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -16,7 +15,10 @@ import static com.suarez.testmoby.testUtils.TestEntityFactory.getTecnologiaDtoCo
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getTecnologiaDtoConIdJson;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getTecnologiaDtoConIdModificado;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getTecnologiaDtoSinId;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,10 +32,10 @@ class TecnologiaControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Disabled
+
     @Test
     @WithMockUser
-    void guardarTecnologia() throws Exception {
+    void guardarTecnologiaTest() throws Exception {
         when(tecnologiaService.guardarTecnologia(getTecnologiaDtoSinId())).thenReturn(getTecnologiaDtoConId());
         mockMvc.perform(post("/api/tecnologia/guardarTecnologia", getTecnologiaDtoConIdJson())
                 .contentType(MediaType.APPLICATION_JSON)
@@ -41,7 +43,7 @@ class TecnologiaControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    @Disabled
+
     @Test
     @WithMockUser
     void editarTecnologia() throws Exception {
@@ -59,5 +61,14 @@ class TecnologiaControllerTest {
         when(tecnologiaService.traerTecnologias()).thenReturn(getListaTecnologiasDto());
         mockMvc.perform(get("/api/tecnologia/traerTecnologias"))
                 .andExpect(status().isOk());
+    }
+
+
+    @Test
+    @WithMockUser
+    void eliminarTecnologiaTest() throws Exception {
+        mockMvc.perform(delete("/api/tecnologia/eliminarTecnologiaPorId/{idTecnologia}", 1))
+                .andExpect(status().isOk());
+        verify(tecnologiaService, times(1)).eliminarTecnologiaPorId(1);
     }
 }
