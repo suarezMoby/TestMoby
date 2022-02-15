@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 
 @Entity
@@ -21,14 +23,16 @@ import java.io.Serializable;
 @Table(name = "tecnologia")
 public class Tecnologia implements Serializable {
 
-   @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tecnologia")
     private Integer idTecnologia;
 
-     @Column(name = "nombre")
+    @NotEmpty(message = "Debe ingresar Una tecnologia")
+    @Column(name = "nombre")
     private String nombreTecnologia;
 
+    @PositiveOrZero
     @Column(name = "version")
     private String version;
 
