@@ -164,23 +164,13 @@ public class TestEntityFactory {
                 .build();
     }
 
-    /** crearCandidatoDto con Id **/
-    public static CandidatoDto getCrearCandidatoDtoConId(){
-        return CandidatoDto.builder()
-                .id(1)
-                .nombre("Danilo")
-                .apellido("Suarez")
-                .tipo(Tipo.DNI)
-                .dni("33102867")
-                .tecnologias(Collections.emptyList())
-                .build();
-    }
+
 
     public static CandidatoPorTecnologiaDto getCandidatoPorTecnologiaDto(){
         return CandidatoPorTecnologiaDto.builder()
                 .idCandidatoPorTecnologia(1)
-                .idCandidato(getCandidatoConId())
-                .idTecnologia(getTecnologiaConId())
+                .candidatoDto(getCandidatoDtoConId())
+                .tecnologiaDto(getTecnologiaDtoConId())
                 .aniosExperiencia(4)
                 .build();
     }
