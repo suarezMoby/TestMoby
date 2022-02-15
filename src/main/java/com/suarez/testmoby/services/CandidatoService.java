@@ -2,6 +2,7 @@ package com.suarez.testmoby.services;
 
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 
 import java.text.ParseException;
 import java.util.List;
@@ -12,7 +13,7 @@ public interface CandidatoService {
 
     Candidato actualizarEstadoDeCandidato(Integer id);
 
-    List<CandidatoDto> findByTecnologia(String tecnologia);
+    public List<CandidatoPorTecnologiaDto> findByTecnologia(String tecnologia);
 
     CandidatoDto editarCandidato(CandidatoDto candidatoDto);
 

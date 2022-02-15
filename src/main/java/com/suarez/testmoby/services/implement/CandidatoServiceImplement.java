@@ -2,9 +2,10 @@ package com.suarez.testmoby.services.implement;
 
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
-import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.repository.CandidatoRepository;
+import com.suarez.testmoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.testmoby.services.CandidatoService;
 import com.suarez.testmoby.services.CandidatoXTecnologiaService;
 import com.suarez.testmoby.services.TecnologiaService;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.text.ParseException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -30,6 +31,9 @@ public class CandidatoServiceImplement implements CandidatoService {
 
     @Autowired
     CandidatoRepository candidatoRepository;
+
+    @Autowired
+    CandidatoXTecnologiaRepository candidatoXTecnologiaRepository;
 
     @Autowired
     TecnologiaService tecnologiaService;
@@ -63,29 +67,16 @@ public class CandidatoServiceImplement implements CandidatoService {
 
 
     @Override
-    public List<CandidatoDto> findByTecnologia(String tecnologia) {
-        List<Candidato> listaCandidato = candidatoRepository.findAll();
-        List<CandidatoDto> listaCandidatoDto = new ArrayList<>();
-        Tecnologia tecnologia1 = tecnologiaService.findByName(tecnologia);
-        List<CandidatoPorTecnologia> candidatoPorTecnologiaList = candidatoXTecnologiaService.findByIdTecnologia(tecnologia1.getIdTecnologia());
+    public List<CandidatoPorTecnologiaDto> findByTecnologia(String tecnologia) {
 
-        for (Candidato candidato : listaCandidato) {
-            for (CandidatoPorTecnologia candidatoPorTecnologia : candidatoPorTecnologiaList) {
-                if (candidatoPorTecnologia.getCandidato().getIdCandidato().equals(candidato.getIdCandidato())) {
-                    CandidatoDto candidatoDto = CandidatoDto.builder()
-                            .id(candidato.getIdCandidato())
-                            .nombre(candidato.getNombre())
-                            .apellido(candidato.getApellido())
-                            .dni(candidato.getDni())
-                            .tipo(candidato.getTipo())
-                            .fechaNacimiento(candidato.getFechaNacimiento())
-                            .candidatoPorTecnologia(candidatoPorTecnologia)
-                            .build();
-                    listaCandidatoDto.add(candidatoDto);
-                }
-            }
+        List<CandidatoPorTecnologia> candidatosPorTecnologia = candidatoXTecnologiaRepository.buscarCandidatosXTecnologiaXTecnologia(tecnologia);
+        List<CandidatoPorTecnologiaDto> candidatosPorTecnologiasDto = new LinkedList<>();
+
+        for (CandidatoPorTecnologia candPorTecn: candidatosPorTecnologia) {
+            candidatosPorTecnologiasDto.add(modelMapper.map(candPorTecn, CandidatoPorTecnologiaDto.class));
         }
-        return listaCandidatoDto;
+
+        return candidatosPorTecnologiasDto;
     }
 
     @Override
