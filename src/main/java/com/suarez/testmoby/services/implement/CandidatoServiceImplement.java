@@ -69,7 +69,7 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Override
     public List<CandidatoPorTecnologiaDto> findByTecnologia(String tecnologia) {
 
-        List<CandidatoPorTecnologia> candidatosPorTecnologia = candidatoXTecnologiaRepository.buscarCandidatosXTecnologiaXTecnologia(tecnologia);
+        List<CandidatoPorTecnologia> candidatosPorTecnologia = candidatoXTecnologiaRepository.buscarCandidatosXTecnologia(tecnologia);
         List<CandidatoPorTecnologiaDto> candidatosPorTecnologiasDto = new LinkedList<>();
 
         for (CandidatoPorTecnologia candPorTecn: candidatosPorTecnologia) {

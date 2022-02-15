@@ -15,5 +15,5 @@ public interface CandidatoXTecnologiaRepository extends JpaRepository<CandidatoP
             + " FROM candidato_x_tecnologia ct"
             + " INNER JOIN tecnologia ON ct.id_tecnologia = tecnologia.id_tecnologia"
             + " WHERE tecnologia.nombre LIKE ?1", nativeQuery = true)
-    List<CandidatoPorTecnologia> buscarCandidatosXTecnologiaXTecnologia(String nombreTecnologia);
+    List<CandidatoPorTecnologia> buscarCandidatosXTecnologia(String nombreTecnologia);
 }
