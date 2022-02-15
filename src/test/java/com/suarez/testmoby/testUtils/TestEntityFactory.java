@@ -2,6 +2,7 @@ package com.suarez.testmoby.testUtils;
 
 import com.google.gson.Gson;
 import com.suarez.testmoby.model.entitys.Candidato;
+import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.enums.Tipo;
 import com.suarez.testmoby.model.views.CandidatoDto;
@@ -213,6 +214,25 @@ public class TestEntityFactory {
         listaCandidatosPorTecnologiaDto.add(candidatoPorTecnologiaDto);
 
         return listaCandidatosPorTecnologiaDto;
+    }
+
+    public static CandidatoPorTecnologia getCandidatoXTecnologia(){
+        return CandidatoPorTecnologia.builder()
+                .idCandidatoPorTecnologia(1)
+                .candidato(getCandidatoConId())
+                .tecnologia(getTecnologiaConId())
+                .build();
+    }
+
+    public static List<CandidatoPorTecnologia> getListaCandidatosXTecnologia(){
+
+        CandidatoPorTecnologia candidatoPorTecnologia = getCandidatoXTecnologia();
+
+        List<CandidatoPorTecnologia> listaCandidatosPorTecnologia = new LinkedList<>();
+
+        listaCandidatosPorTecnologia.add(candidatoPorTecnologia);
+
+        return listaCandidatosPorTecnologia;
     }
 
 }
