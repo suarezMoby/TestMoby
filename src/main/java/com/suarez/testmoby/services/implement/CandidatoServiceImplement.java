@@ -49,7 +49,9 @@ public class CandidatoServiceImplement implements CandidatoService {
         if(candidatoDto.getDni() == null){
             log.error("Se debe incluir un dni");
         }
+        candidatoDto.setEstado(HABILITADO);
         Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
+
         Candidato candidato = candidatoRepository.save(nuevo);
         log.info("El candidato se guardo correctamente");
 
