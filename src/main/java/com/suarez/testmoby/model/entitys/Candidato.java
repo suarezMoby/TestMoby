@@ -32,7 +32,7 @@ public class Candidato implements Serializable {
     @Column(name = "id_candidato")
     private Integer idCandidato;
 
-      @Column(name = "nombre")
+    @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "apellido")
@@ -48,6 +48,7 @@ public class Candidato implements Serializable {
     @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
 
+    @Column(name = "estado")
     private int estado;
 
 }

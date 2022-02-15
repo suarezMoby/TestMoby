@@ -1,7 +1,6 @@
 package com.suarez.testmoby.services.implement;
 
 import com.suarez.testmoby.exception.NoSeEncontroIdException;
-import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
 import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.TecnologiaDto;
 import com.suarez.testmoby.repository.TecnologiaRepository;
@@ -19,7 +18,6 @@ import java.util.List;
 @Service
 public class TecnologiaServiceImplement implements TecnologiaService {
 
-
     @Autowired
     TecnologiaRepository tecnologiaRepository;
 
@@ -29,11 +27,6 @@ public class TecnologiaServiceImplement implements TecnologiaService {
     @Autowired
     ModelMapper modelMappper;
 
-
-    @Override
-    public void guardarTecnologiaPorCandidato(CandidatoPorTecnologia candidatoPorTecnologia) {
-
-    }
 
     @Override
     public TecnologiaDto guardarTecnologia(TecnologiaDto tecnologiaDto) {

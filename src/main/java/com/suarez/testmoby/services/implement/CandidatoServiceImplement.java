@@ -1,24 +1,25 @@
 package com.suarez.testmoby.services.implement;
 
-import com.suarez.testmoby.exception.NoSeEncontroIdException;
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
-import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.repository.CandidatoRepository;
+import com.suarez.testmoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.testmoby.services.CandidatoService;
 import com.suarez.testmoby.services.CandidatoXTecnologiaService;
 import com.suarez.testmoby.services.TecnologiaService;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-@Log
+
+@Slf4j
 @Service
 public class CandidatoServiceImplement implements CandidatoService {
 
@@ -31,6 +32,9 @@ public class CandidatoServiceImplement implements CandidatoService {
     CandidatoRepository candidatoRepository;
 
     @Autowired
+    CandidatoXTecnologiaRepository candidatoXTecnologiaRepository;
+
+    @Autowired
     TecnologiaService tecnologiaService;
 
     @Autowired
@@ -39,11 +43,18 @@ public class CandidatoServiceImplement implements CandidatoService {
     @Autowired
     ModelMapper modelMapper;
 
-
     @Override
-    public Candidato createCandidato(Candidato candidato) {
-        log.info("Este es el nombre del candidato" + candidato.getNombre());
-        return candidatoRepository.save(candidato);
+    public CandidatoDto guardar(CandidatoDto candidatoDto){
+        if(candidatoDto.getDni() == null){
+            log.error("Se debe incluir un dni");
+        }
+        candidatoDto.setEstado(HABILITADO);
+        Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
+
+        Candidato candidato = candidatoRepository.save(nuevo);
+        log.info("El candidato se guardo correctamente");
+
+        return modelMapper.map(candidato, CandidatoDto.class);
     }
 
     @Override
@@ -57,35 +68,22 @@ public class CandidatoServiceImplement implements CandidatoService {
 
 
     @Override
-    public List<CandidatoDto> findByTecnologia(String tecnologia) {
-        List<Candidato> listaCandidato = candidatoRepository.findAll();
-        List<CandidatoDto> listaCandidatoDto = new ArrayList<>();
-        Tecnologia tecnologia1 = tecnologiaService.findByName(tecnologia);
-        List<CandidatoPorTecnologia> candidatoPorTecnologiaList = candidatoXTecnologiaService.findByIdTecnologia(tecnologia1.getIdTecnologia());
+    public List<CandidatoPorTecnologiaDto> findByTecnologia(String tecnologia) {
 
-        for (Candidato candidato : listaCandidato) {
-            for (CandidatoPorTecnologia candidatoPorTecnologia : candidatoPorTecnologiaList) {
-                if (candidatoPorTecnologia.getCandidato().getIdCandidato().equals(candidato.getIdCandidato())) {
-                    CandidatoDto candidatoDto = CandidatoDto.builder()
-                            .id(candidato.getIdCandidato())
-                            .nombre(candidato.getNombre())
-                            .apellido(candidato.getApellido())
-                            .dni(candidato.getDni())
-                            .tipo(candidato.getTipo())
-                            .fechaNacimiento(candidato.getFechaNacimiento())
-                            .candidatoPorTecnologia(candidatoPorTecnologia)
-                            .build();
-                    listaCandidatoDto.add(candidatoDto);
-                }
-            }
+        List<CandidatoPorTecnologia> candidatosPorTecnologia = candidatoXTecnologiaRepository.buscarCandidatosXTecnologia(tecnologia);
+        List<CandidatoPorTecnologiaDto> candidatosPorTecnologiasDto = new LinkedList<>();
+
+        for (CandidatoPorTecnologia candPorTecn: candidatosPorTecnologia) {
+            candidatosPorTecnologiasDto.add(modelMapper.map(candPorTecn, CandidatoPorTecnologiaDto.class));
         }
-        return listaCandidatoDto;
+
+        return candidatosPorTecnologiasDto;
     }
 
     @Override
     public CandidatoDto editarCandidato(CandidatoDto candidatoDto) {
         if(candidatoDto.getId() == null){
-            throw new NoSeEncontroIdException("No se encontro el Id del candidato");
+            log.error("No se encontro el Id del candidato");
         }
         Candidato nuevo = modelMapper.map(candidatoDto, Candidato.class);
 

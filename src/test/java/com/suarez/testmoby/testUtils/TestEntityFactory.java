@@ -77,6 +77,11 @@ public class TestEntityFactory {
         return new Gson().toJson(getCandidatoConId());
     }
 
+    /** CandidatoDto con Id Json **/
+    public static String getCandidatoDtoConIdJson(){
+        return new Gson().toJson(getCandidatoDtoConId());
+    }
+
     /** TecnologiaDto con Id modificado Json **/
     public static String getTecnologiaDTOConIdModificadoJson(){
         return new Gson().toJson(getTecnologiaDtoConIdModificado());
@@ -100,6 +105,7 @@ public class TestEntityFactory {
                 .tipo(null)
                 .fechaNacimiento(null)
                 .dni("33102857")
+                .estado(1)
                 .build();
     }
 
@@ -123,6 +129,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
 
@@ -135,6 +142,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
 
@@ -146,6 +154,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
     /** crearCandidatoDto sin Id **/
@@ -159,23 +168,13 @@ public class TestEntityFactory {
                 .build();
     }
 
-    /** crearCandidatoDto con Id **/
-    public static CandidatoDto getCrearCandidatoDtoConId(){
-        return CandidatoDto.builder()
-                .id(1)
-                .nombre("Danilo")
-                .apellido("Suarez")
-                .tipo(Tipo.DNI)
-                .dni("33102867")
-                .tecnologias(Collections.emptyList())
-                .build();
-    }
+
 
     public static CandidatoPorTecnologiaDto getCandidatoPorTecnologiaDto(){
         return CandidatoPorTecnologiaDto.builder()
                 .idCandidatoPorTecnologia(1)
-                .idCandidato(getCandidatoConId())
-                .idTecnologia(getTecnologiaConId())
+                .candidatoDto(getCandidatoDtoConId())
+                .tecnologiaDto(getTecnologiaDtoConId())
                 .aniosExperiencia(4)
                 .build();
     }
@@ -203,6 +202,17 @@ public class TestEntityFactory {
         candidatoDtoList.add(candidatoDto);
 
         return candidatoDtoList;
+    }
+
+    public static List<CandidatoPorTecnologiaDto> getListaCandidatosXTecnologiaDto(){
+
+        CandidatoPorTecnologiaDto candidatoPorTecnologiaDto = getCandidatoPorTecnologiaDto();
+
+        List<CandidatoPorTecnologiaDto> listaCandidatosPorTecnologiaDto = new LinkedList<>();
+
+        listaCandidatosPorTecnologiaDto.add(candidatoPorTecnologiaDto);
+
+        return listaCandidatosPorTecnologiaDto;
     }
 
 }

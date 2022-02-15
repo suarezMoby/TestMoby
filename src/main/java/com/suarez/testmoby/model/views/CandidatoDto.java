@@ -1,7 +1,5 @@
 package com.suarez.testmoby.model.views;
 
-import com.suarez.testmoby.model.entitys.CandidatoPorTecnologia;
-import com.suarez.testmoby.model.entitys.Tecnologia;
 import com.suarez.testmoby.model.enums.Tipo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,8 +22,6 @@ public class CandidatoDto {
     private Tipo tipo;
     private String dni;
     private Date fechaNacimiento;
-    private CandidatoPorTecnologia candidatoPorTecnologia;
-
-    private List<Tecnologia> tecnologias;
+    private Integer estado;
 
 }

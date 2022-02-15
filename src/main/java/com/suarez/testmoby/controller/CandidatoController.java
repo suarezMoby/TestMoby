@@ -1,8 +1,7 @@
 package com.suarez.testmoby.controller;
 
 import com.suarez.testmoby.model.views.CandidatoDto;
-import com.suarez.testmoby.model.views.CrearCandidatoDto;
-import com.suarez.testmoby.services.CandidatoNuevoService;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.services.CandidatoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.util.List;
 
 @Log
@@ -34,16 +32,13 @@ public class CandidatoController {
     @Autowired
     private CandidatoService candidatoService;
 
-    @Autowired
-    private CandidatoNuevoService candidatoNuevoService;
-
 
     @PostMapping(value = "/crear")
     @ApiOperation(value = "Crear Candidato", notes = "Servicio para crear un candidato nuevo")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidato creado correctamente"),
     @ApiResponse(code = 400, message = "Solicitud invalida")})
-    public ResponseEntity<Boolean> crearCandidato(@RequestBody CrearCandidatoDto dto) throws ParseException {
-        return new ResponseEntity<>(candidatoNuevoService.guardar(dto), HttpStatus.CREATED);
+    public ResponseEntity<CandidatoDto> guardar(@RequestBody CandidatoDto candidatoDto) {
+        return new ResponseEntity<>(candidatoService.guardar(candidatoDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/eliminarCandidato/{idCandidato}")
@@ -58,7 +53,7 @@ public class CandidatoController {
     @ApiOperation(value = "Listar Candidato", notes = "Servicio para listar candidatos segun determinada tecnologia")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidatos listados correctamente"),
             @ApiResponse(code = 404, message = "Candidatos no encontrados")})
-    public ResponseEntity<List<CandidatoDto>> buscarCandidato(@RequestParam String tecnologia) {
+    public ResponseEntity<List<CandidatoPorTecnologiaDto>> buscarCandidato(@RequestParam String tecnologia) {
         return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
     }
 

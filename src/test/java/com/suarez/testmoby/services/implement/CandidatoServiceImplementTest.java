@@ -11,14 +11,15 @@ import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
+
+import java.text.ParseException;
 
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoSinId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoSinId;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(controllers = CandidatoServiceImplement.class)
@@ -35,35 +36,27 @@ class CandidatoServiceImplementTest {
 
     @Spy
     private ModelMapper modelMapper;
-
-
+    
     @Test
-    void createCandidato() {
-        Candidato candidatoEsperado = mock(Candidato.class);
-        when(candidatoRepository.save(candidatoEsperado)).thenReturn(candidatoEsperado);
-
-        Candidato candidatoGuardado = candidatoServiceImplement.createCandidato(candidatoEsperado);
-
-        verify(candidatoRepository,times(1)).save(candidatoEsperado);
-        assertNotNull(candidatoGuardado);
-    }
-
-    @Test
-    void actualizarEstadoDeCandidato() {
-
-    }
-
-    @Test
-    void findByTecnologia() {
-    }
-
-    @Test
+    @WithMockUser
     void editarCandidato() {
         when(modelMapper.map(getCandidatoDtoConId(), Candidato.class)).thenReturn(getCandidatoConId());
         when(candidatoRepository.save(getCandidatoConId())).thenReturn(getCandidatoConId());
         when(modelMapper.map(getCandidatoConId(), CandidatoDto.class)).thenReturn(getCandidatoDtoConId());
 
         CandidatoDto candidatoDTO = candidatoServiceImplement.editarCandidato(getCandidatoDtoConId());
+
+        assertEquals(getCandidatoDtoConId(), candidatoDTO);
+    }
+
+    @Test
+    @WithMockUser
+    void guardar() throws ParseException {
+        when(modelMapper.map(getCandidatoDtoSinId(), Candidato.class)).thenReturn(getCandidatoSinId());
+        when(candidatoRepository.save(getCandidatoSinId())).thenReturn(getCandidatoConId());
+        when(modelMapper.map(getCandidatoConId(), CandidatoDto.class)).thenReturn(getCandidatoDtoConId());
+
+        CandidatoDto candidatoDTO = candidatoServiceImplement.guardar(getCandidatoDtoSinId());
 
         assertEquals(getCandidatoDtoConId(), candidatoDTO);
     }
