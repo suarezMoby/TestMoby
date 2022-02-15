@@ -36,7 +36,7 @@ public class CandidatoController {
     @PostMapping(value = "/crear")
     @ApiOperation(value = "Crear Candidato", notes = "Servicio para crear un candidato nuevo")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidato creado correctamente"),
-    @ApiResponse(code = 400, message = "Solicitud invalida")})
+            @ApiResponse(code = 400, message = "Solicitud invalida")})
     public ResponseEntity<CandidatoDto> guardar(@RequestBody CandidatoDto candidatoDto) {
         return new ResponseEntity<>(candidatoService.guardar(candidatoDto), HttpStatus.CREATED);
     }
@@ -53,17 +53,16 @@ public class CandidatoController {
     @ApiOperation(value = "Listar Candidato", notes = "Servicio para listar candidatos segun determinada tecnologia")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidatos listados correctamente"),
             @ApiResponse(code = 404, message = "Candidatos no encontrados")})
-    public ResponseEntity<List<CandidatoPorTecnologiaDto>> buscarCandidato(@RequestParam String tecnologia) {
-        return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
+    public ResponseEntity<List<CandidatoPorTecnologiaDto>> buscarCandidato(@PathVariable String tecnologia) {
+        return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia), HttpStatus.OK);
     }
 
     @PostMapping(value = "/editarCandidato")
     @ApiOperation(value = "Editar Candidato", notes = "Servicio para editar un candidato")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidatos editado correctamente"),
             @ApiResponse(code = 404, message = "Candidato no encontrado")})
-    public ResponseEntity<CandidatoDto> modificarCandidato(@RequestBody CandidatoDto candidatoDTO){
-        return new ResponseEntity<> (candidatoService.editarCandidato(candidatoDTO), HttpStatus.OK);
+    public ResponseEntity<CandidatoDto> modificarCandidato(@RequestBody CandidatoDto candidatoDTO) {
+        return new ResponseEntity<>(candidatoService.editarCandidato(candidatoDTO), HttpStatus.OK);
     }
 
-   
 }

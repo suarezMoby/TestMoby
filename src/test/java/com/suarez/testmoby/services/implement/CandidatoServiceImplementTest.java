@@ -2,7 +2,9 @@ package com.suarez.testmoby.services.implement;
 
 import com.suarez.testmoby.model.entitys.Candidato;
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.repository.CandidatoRepository;
+import com.suarez.testmoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.testmoby.services.CandidatoService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,11 +16,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 
 import java.text.ParseException;
+import java.util.List;
 
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoSinId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoSinId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getListaCandidatosXTecnologia;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -30,6 +34,9 @@ class CandidatoServiceImplementTest {
 
     @Mock
     CandidatoRepository candidatoRepository;
+
+    @Mock
+    CandidatoXTecnologiaRepository candidatoXTecnologiaRepository;
 
     @MockBean
     CandidatoService candidatoService;
@@ -59,5 +66,12 @@ class CandidatoServiceImplementTest {
         CandidatoDto candidatoDTO = candidatoServiceImplement.guardar(getCandidatoDtoSinId());
 
         assertEquals(getCandidatoDtoConId(), candidatoDTO);
+    }
+
+    @Test
+    void findByTecnologia() {
+        when(candidatoXTecnologiaRepository.buscarCandidatosXTecnologia("java")).thenReturn(getListaCandidatosXTecnologia());
+
+        List<CandidatoPorTecnologiaDto> lista = candidatoServiceImplement.findByTecnologia("java");
     }
 }
