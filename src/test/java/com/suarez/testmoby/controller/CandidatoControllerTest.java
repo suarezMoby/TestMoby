@@ -17,7 +17,7 @@ import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoCon
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConIdJson;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoEditado;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoSinId;
-import static com.suarez.testmoby.testUtils.TestEntityFactory.getListaCandidatosDto;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getListaCandidatosXTecnologiaDto;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -60,7 +60,7 @@ class CandidatoControllerTest {
     @Test
     @WithMockUser
     void buscarCandidato() throws Exception {
-        when(candidatoService.findByTecnologia("java")).thenReturn(getListaCandidatosDto());
+        when(candidatoService.findByTecnologia("java")).thenReturn(getListaCandidatosXTecnologiaDto());
         mockMvc.perform(get("/api/candidato/listarCandidatos/{tecnologia}", "java"))
                 .andExpect(status().isOk());
     }

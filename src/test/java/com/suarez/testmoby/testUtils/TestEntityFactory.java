@@ -210,4 +210,15 @@ public class TestEntityFactory {
         return candidatoDtoList;
     }
 
+    public static List<CandidatoPorTecnologiaDto> getListaCandidatosXTecnologiaDto(){
+
+        CandidatoPorTecnologiaDto candidatoPorTecnologiaDto = getCandidatoPorTecnologiaDto();
+
+        List<CandidatoPorTecnologiaDto> listaCandidatosPorTecnologiaDto = new LinkedList<>();
+
+        listaCandidatosPorTecnologiaDto.add(candidatoPorTecnologiaDto);
+
+        return listaCandidatosPorTecnologiaDto;
+    }
+
 }
