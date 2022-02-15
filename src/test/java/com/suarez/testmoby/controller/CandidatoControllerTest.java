@@ -59,7 +59,7 @@ class CandidatoControllerTest {
     @Disabled
     @Test
     @WithMockUser
-    void buscarCandidato() throws Exception {
+    void buscarCandidatoTest() throws Exception{
         when(candidatoService.findByTecnologia("java")).thenReturn(getListaCandidatosXTecnologiaDto());
         mockMvc.perform(get("/api/candidato/listarCandidatos/{tecnologia}", "java"))
                 .andExpect(status().isOk());
