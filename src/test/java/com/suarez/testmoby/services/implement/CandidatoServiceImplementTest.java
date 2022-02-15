@@ -36,19 +36,8 @@ class CandidatoServiceImplementTest {
 
     @Spy
     private ModelMapper modelMapper;
-
-
+    
     @Test
-    void actualizarEstadoDeCandidato() {
-
-    }
-
-    @Test
-    void findByTecnologia() {
-    }
-
-    @Test
-
     @WithMockUser
     void editarCandidato() {
         when(modelMapper.map(getCandidatoDtoConId(), Candidato.class)).thenReturn(getCandidatoConId());
