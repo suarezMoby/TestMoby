@@ -1,6 +1,7 @@
 package com.suarez.testmoby.controller;
 
 import com.suarez.testmoby.model.views.CandidatoDto;
+import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.services.CandidatoNuevoService;
 import com.suarez.testmoby.services.CandidatoService;
 import io.swagger.annotations.Api;
@@ -57,7 +58,7 @@ public class CandidatoController {
     @ApiOperation(value = "Listar Candidato", notes = "Servicio para listar candidatos segun determinada tecnologia")
     @ApiResponses(value = {@ApiResponse(code = 201, message = "Candidatos listados correctamente"),
             @ApiResponse(code = 404, message = "Candidatos no encontrados")})
-    public ResponseEntity<List<CandidatoDto>> buscarCandidato(@RequestParam String tecnologia) {
+    public ResponseEntity<List<CandidatoPorTecnologiaDto>> buscarCandidato(@RequestParam String tecnologia) {
         return new ResponseEntity<>(candidatoService.findByTecnologia(tecnologia),HttpStatus.OK);
     }
 
