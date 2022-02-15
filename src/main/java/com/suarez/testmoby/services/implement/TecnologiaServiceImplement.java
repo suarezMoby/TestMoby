@@ -72,7 +72,7 @@ public class TecnologiaServiceImplement implements TecnologiaService {
 
     @Override
     public Tecnologia findByName(String name) {
-        log.info("Este es el nombre de la tecnologia es" + name);
+        log.info("Este es el nombre de la tecnologia" + name);
         return tecnologiaService.findByName(name);
     }
 

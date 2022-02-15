@@ -6,6 +6,7 @@ import com.suarez.testmoby.model.views.CandidatoPorTecnologiaDto;
 import com.suarez.testmoby.repository.CandidatoRepository;
 import com.suarez.testmoby.repository.CandidatoXTecnologiaRepository;
 import com.suarez.testmoby.services.CandidatoService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -69,9 +70,12 @@ class CandidatoServiceImplementTest {
     }
 
     @Test
+    @WithMockUser
     void findByTecnologia() {
         when(candidatoXTecnologiaRepository.buscarCandidatosXTecnologia("java")).thenReturn(getListaCandidatosXTecnologia());
 
         List<CandidatoPorTecnologiaDto> lista = candidatoServiceImplement.findByTecnologia("java");
+
+        Assertions.assertNotNull(lista);
     }
 }

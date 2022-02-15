@@ -1,8 +1,6 @@
 package com.suarez.testmoby.controller;
 
-import com.suarez.testmoby.services.CandidatoNuevoService;
 import com.suarez.testmoby.services.CandidatoService;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,9 +28,6 @@ class CandidatoControllerTest {
     @MockBean
     CandidatoService candidatoService;
 
-    @MockBean
-    CandidatoNuevoService candidatoNuevoService;
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -56,7 +51,7 @@ class CandidatoControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Disabled
+
     @Test
     @WithMockUser
     void buscarCandidatoTest() throws Exception{
