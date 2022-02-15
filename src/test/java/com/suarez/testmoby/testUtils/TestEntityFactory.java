@@ -105,6 +105,7 @@ public class TestEntityFactory {
                 .tipo(null)
                 .fechaNacimiento(null)
                 .dni("33102857")
+                .estado(1)
                 .build();
     }
 
@@ -128,6 +129,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
 
@@ -140,6 +142,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
 
@@ -151,6 +154,7 @@ public class TestEntityFactory {
                 .tipo(Tipo.DNI)
                 .dni("33102867")
                 .fechaNacimiento(null)
+                .estado(1)
                 .build();
     }
     /** crearCandidatoDto sin Id **/

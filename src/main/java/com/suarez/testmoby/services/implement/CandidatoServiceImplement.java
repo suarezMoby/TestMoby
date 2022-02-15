@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class CandidatoServiceImplement implements CandidatoService {
     ModelMapper modelMapper;
 
     @Override
-    public CandidatoDto guardar(CandidatoDto candidatoDto) throws ParseException {
+    public CandidatoDto guardar(CandidatoDto candidatoDto){
         if(candidatoDto.getDni() == null){
             log.error("Se debe incluir un dni");
         }

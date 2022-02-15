@@ -11,9 +11,14 @@ import org.mockito.Spy;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
+
+import java.text.ParseException;
 
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoConId;
 import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoConId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoDtoSinId;
+import static com.suarez.testmoby.testUtils.TestEntityFactory.getCandidatoSinId;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -43,12 +48,26 @@ class CandidatoServiceImplementTest {
     }
 
     @Test
+
+    @WithMockUser
     void editarCandidato() {
         when(modelMapper.map(getCandidatoDtoConId(), Candidato.class)).thenReturn(getCandidatoConId());
         when(candidatoRepository.save(getCandidatoConId())).thenReturn(getCandidatoConId());
         when(modelMapper.map(getCandidatoConId(), CandidatoDto.class)).thenReturn(getCandidatoDtoConId());
 
         CandidatoDto candidatoDTO = candidatoServiceImplement.editarCandidato(getCandidatoDtoConId());
+
+        assertEquals(getCandidatoDtoConId(), candidatoDTO);
+    }
+
+    @Test
+    @WithMockUser
+    void guardar() throws ParseException {
+        when(modelMapper.map(getCandidatoDtoSinId(), Candidato.class)).thenReturn(getCandidatoSinId());
+        when(candidatoRepository.save(getCandidatoSinId())).thenReturn(getCandidatoConId());
+        when(modelMapper.map(getCandidatoConId(), CandidatoDto.class)).thenReturn(getCandidatoDtoConId());
+
+        CandidatoDto candidatoDTO = candidatoServiceImplement.guardar(getCandidatoDtoSinId());
 
         assertEquals(getCandidatoDtoConId(), candidatoDTO);
     }
