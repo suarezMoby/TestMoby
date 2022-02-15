@@ -56,7 +56,7 @@ class CandidatoControllerTest {
                 .andExpect(status().isOk());
     }
 
-    @Disabled
+
     @Test
     @WithMockUser
     void buscarCandidatoTest() throws Exception{
