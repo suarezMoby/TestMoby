@@ -31,11 +31,11 @@ public class CandidatoPorTecnologia implements Serializable {
     @Column(name = "id_candidato_por_tecnologia")
     private Integer idCandidatoPorTecnologia;
 
-     @JoinColumn(name = "id_candidato")
+    @JoinColumn(name = "id_candidato", referencedColumnName = "id_candidato")
     @ManyToOne
     private Candidato candidato;
 
-    @JoinColumn(name = "id_tecnologia")
+    @JoinColumn(name = "id_tecnologia", referencedColumnName = "id_tecnologia")
     @ManyToOne
     private Tecnologia tecnologia;
 
